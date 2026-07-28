@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<link rel="canonical" href="https://www.exerzice.com">
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Exerzice web platform">
+		<link rel="shortcut icon" href="/images/icono/icono.ico"/>
+
+
+		<meta property="og:title" content="CD Cuellar Stone | Running Team"> <meta property="og:description" content="Club deportivo especializado en running y atletismo en Marmol. Únete al equipo y mejora tu rendimiento.">
+		<!--<meta property="og:image" content="/images/og-image.jpg">-->
+		<meta property="og:url" content="https://www.exerzice.com">
+		<meta property="og:type" content="website">
+
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="CD Cuellar Stone | Running Team">
+		<meta name="twitter:description" content="Club deportivo especializado en running y atletismo en Marmol. Únete al equipo y mejora tu rendimiento.">
+		<meta name="twitter:image" content="/images/twitter-image.jpg">
+
+
+		 <!--<script type="application/ld+json"> {
+				    "@context": "https://schema.org",
+				    "@type": "SportsTeam",
+				    "name": "Cuellar Stone Marmol Running Team",
+				    "sport": "Running",
+				    "url": "https://www.exerzice.com",
+				    "logo": "https://www.cuellarstonerunning.com/images/icono/logo-cuellar-nav.png",
+				    "description": "Club deportivo especializado en running y atletismo en Marmol."
+				    }
+				</script>-->
+
+		{% block styles %}
+			<link rel="stylesheet" href="/css/base.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+		{% endblock %}
+
+
+
+		<title>Exerzice</title>
+	</head>
+	<body>
+        <nav>
+            <ul>
+                <li>
+                    <a href='/'>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href='/explore'>
+                        Explore
+                    </a>
+                </li>
+                <li>
+                    <a href='/communities'>
+                        Communities
+                    </a>
+                </li>
+                <li>
+                    <a href='/profile'>
+                        Profile
+                    </a>
+                </li>
+            </ul>
+		</nav>
+
+		<div class='page'>
+            {% block content %}
+
+            {% endblock %}
+	</body>
+</html>
