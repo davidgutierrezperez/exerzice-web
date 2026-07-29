@@ -1,6 +1,118 @@
-{% extends 'base.twig' %}
+{% extends 'common_base.twig' %}
 
+{% block styles %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/posts.css">
+{% endblock %}
 
-{% block content %}
-<h1>Home</h1>
+{% block main_content %}
+<section class='posts-section flex-column'>
+    <div class='post'>
+        <div class='post-header flex-row'>
+            <img src='/images/examples/other_user_logo.png' class='post-header-user-logo'>
+            <div class='post-header-info flex-column'>
+                <div class='post-header-info-up flex-row'>
+                    <p class='post-user bold'>Antonia Martinez</p>
+                    <p class='post-sport bold'>Trail running</p>
+                    <p class='post-location thin'>Almería</p>
+                </div>
+                <p>Date</p>
+            </div>
+        </div> 
+
+        <div class='post-content'>
+            <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</p>
+            <img src='/images/examples/trail-running.jpg' class='post-content-image'>
+        </div>
+
+        <div class='post-interactions flex-row'>
+            <div class='post-interactions-likes flex-row'>
+                <form>
+                    <button type='submit borderless'>
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </form>
+                
+                <p>100</p>
+            </div>
+
+            <div class='post-interactions-comments flex-row'>
+                <i class="fa-regular fa-comment"></i>
+                <p>100</p>
+            </div>
+        </div>
+    </div>
+
+    <div class='post'>
+        <div class='post-header flex-row'>
+            <img src='/images/examples/other_user_logo.png' class='post-header-user-logo'>
+            <div class='post-header-info flex-column'>
+                <div class='post-header-info-up flex-row'>
+                    <p class='post-user bold'>User user</p>
+                    <p class='post-sport bold'>Sport</p>
+                    <p class='post-location thin'>Location</p>
+                </div>
+                <p>Date</p>
+            </div>
+        </div> 
+
+        <div class='post-content'>
+            <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</p>
+            <img src='/images/examples/trail-running.jpg' class='post-content-image'>
+        </div>
+
+        <div class='post-interactions flex-row'>
+            <div class='post-interactions-likes flex-row'>
+                <form>
+                    <button type='submit borderless'>
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </form>
+                
+                <p>100</p>
+            </div>
+
+            <div class='post-interactions-comments flex-row'>
+                <i class="fa-regular fa-comment"></i>
+                <p>100</p>
+            </div>
+        </div>
+    </div>
+
+    <div class='post'>
+        <div class='post-header flex-row'>
+            <img src='/images/examples/other_user_logo.png' class='post-header-user-logo'>
+            <div class='post-header-info flex-column'>
+                <div class='post-header-info-up flex-row'>
+                    <p class='post-user bold'>User user</p>
+                    <p class='post-sport bold'>Sport</p>
+                    <p class='post-location thin'>Location</p>
+                </div>
+                <p>Date</p>
+            </div>
+        </div> 
+
+        <div class='post-content'>
+            <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</p>
+            <img src='/images/examples/trail-running.jpg' class='post-content-image'>
+        </div>
+
+        <div class='post-interactions flex-row'>
+            <div class='post-interactions-likes flex-row'>
+                <form>
+                    <button type='submit borderless'>
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </form>
+                
+                <p>100</p>
+            </div>
+
+            <div class='post-interactions-comments flex-row'>
+                <i class="fa-regular fa-comment"></i>
+                <p>100</p>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

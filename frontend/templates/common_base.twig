@@ -1,0 +1,27 @@
+{% extends 'base.twig' %}
+
+{% block styles %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/common_base.css">
+{% endblock %}
+
+{% block left_aside %}
+<nav class='common-nav'>
+    <ul class='flex-column'>
+        <li>Home</li>
+        <li>Explore</li>
+        <li>Communities</li>
+        <li>Events</li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block main_content %}
+<section class='posts-section'>
+
+</section>
+{% endblock %}
+
+{% block right_aside %}
+
+{% endblock %}
