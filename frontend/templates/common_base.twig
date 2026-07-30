@@ -1,0 +1,45 @@
+{% extends 'base.twig' %}
+
+{% block styles %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/common_base.css">
+{% endblock %}
+
+{% block left_aside %}
+<nav class='common-nav'>
+    <ul class='flex-column'>
+        <li>
+            <a href='/' class='link-with-icon link flex-row'>
+                <i class="fa-solid fa-house"></i>
+                Home
+            </a>
+        </li>
+        <li>
+            <a href='/' class='link-with-icon link flex-row'>
+                <i class="fa-regular fa-compass"></i>
+                Explore
+            </a>
+        </li>
+        <li>
+            <a href='/' class='link-with-icon link flex-row'>
+                <i class="fa-solid fa-share-nodes"></i>
+                Communities
+            </a>
+        </li>
+        <li>
+            <a href='/' class='link-with-icon link flex-row'>
+                <i class="fa-regular fa-calendar"></i>
+                Events
+            </a>
+        </li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block main_content %}
+
+{% endblock %}
+
+{% block right_aside %}
+
+{% endblock %}
