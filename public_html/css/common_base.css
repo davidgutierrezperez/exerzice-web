@@ -1,4 +1,25 @@
 .common-nav ul {
-    font-size: 24px;
-    gap: 20px;
+    font-size: 18px;
+    gap: 25px;
+}
+
+.common-nav ul li {
+    border: solid 1px transparent;
+    padding: 5px 10px;
+}
+
+.common-nav ul li:hover {
+    border-radius: 1000px;
+    border-color: black;
+    background-color: lightgray;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    align-items: center;
+}
+
+.link-with-icon {
+    gap: 40px;
 }

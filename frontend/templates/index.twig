@@ -3,13 +3,15 @@
 {% block styles %}
     {{ parent() }}
     <link rel="stylesheet" href="/css/posts.css">
+    <link rel="stylesheet" href="/css/communities.css">
+    <link rel="stylesheet" href="/css/events.css">
 {% endblock %}
 
 {% block main_content %}
 <section class='posts-section flex-column'>
     <div class='post'>
         <div class='post-header flex-row'>
-            <img src='/images/examples/other_user_logo.png' class='post-header-user-logo'>
+            <img src='/images/examples/other_user_logo.png' class='image-logo'>
             <div class='post-header-info flex-column'>
                 <div class='post-header-info-up flex-row'>
                     <p class='post-user bold'>Antonia Martinez</p>
@@ -45,7 +47,7 @@
 
     <div class='post'>
         <div class='post-header flex-row'>
-            <img src='/images/examples/other_user_logo.png' class='post-header-user-logo'>
+            <img src='/images/examples/other_user_logo.png' class='image-logo'>
             <div class='post-header-info flex-column'>
                 <div class='post-header-info-up flex-row'>
                     <p class='post-user bold'>User user</p>
@@ -81,7 +83,7 @@
 
     <div class='post'>
         <div class='post-header flex-row'>
-            <img src='/images/examples/other_user_logo.png' class='post-header-user-logo'>
+            <img src='/images/examples/other_user_logo.png' class='image-logo'>
             <div class='post-header-info flex-column'>
                 <div class='post-header-info-up flex-row'>
                     <p class='post-user bold'>User user</p>
@@ -114,5 +116,144 @@
             </div>
         </div>
     </div>
+</section>
+{% endblock %}
+
+{% block right_aside %}
+<section class='main-communities right-aside-section'>
+    <div class='main-communities-header section-title-link-header flex-row'>
+        <h2 class='title-header'>Main communities</h2>
+        <a href='/communities' class='button borderless link'>See all</a>
+    </div>
+
+    <ul class='section-list flex-column'>
+        <div class='community-simple-div-link flex-row'>
+            <img src='/images/examples/trail_running_logo.png' class='image-logo'>
+
+            <div class='community-basic-info flex-column'>
+                <p class='bold'>Titulo de comunidad</p>
+                <p class='thin subinfo'>Número de miembros</p>
+            </div>
+
+            <form class='form-join-community flex-row'>
+                <button type='submit' class='button button-padding'>Unirse</button>
+            </form>
+        </div>
+
+        <div class='community-simple-div-link flex-row'>
+            <img src='/images/examples/trail_running_logo.png' class='image-logo'>
+
+            <div class='community-basic-info flex-column'>
+                <p class='bold'>Titulo de comunidad</p>
+                <p class='thin subinfo'>Número de miembros</p>
+            </div>
+
+            <form class='form-join-community flex-row'>
+                <button type='submit' class='button button-padding'>Unirse</button>
+            </form>
+        </div>
+
+        <div class='community-simple-div-link flex-row'>
+            <img src='/images/examples/trail_running_logo.png' class='image-logo'>
+
+            <div class='community-basic-info flex-column'>
+                <p class='bold'>Titulo de comunidad</p>
+                <p class='thin subinfo'>Número de miembros</p>
+            </div>
+
+            <form class='form-join-community flex-row'>
+                <button type='submit' class='button button-padding'>Unirse</button>
+            </form>
+        </div>
+
+        <div class='community-simple-div-link flex-row'>
+            <img src='/images/examples/trail_running_logo.png' class='image-logo'>
+
+            <div class='community-basic-info flex-column'>
+                <p class='bold'>Titulo de comunidad</p>
+                <p class='thin subinfo'>Número de miembros</p>
+            </div>
+
+            <form class='form-join-community flex-row'>
+                <button type='submit' class='button button-padding'>Unirse</button>
+            </form>
+        </div>
+
+        <div class='community-simple-div-link flex-row'>
+            <img src='/images/examples/trail_running_logo.png' class='image-logo'>
+
+            <div class='community-basic-info flex-column'>
+                <p class='bold'>Titulo de comunidad</p>
+                <p class='thin subinfo'>Número de miembros</p>
+            </div>
+
+            <form class='form-join-community flex-row'>
+                <button type='submit' class='button button-padding'>Unirse</button>
+            </form>
+        </div>
+    </ul>
+</section>
+
+<section class='next-events right-aside-section'>
+    <div class='next-events-header section-title-link-header flex-row'>
+        <h2 class='title-header'>Next events</h2>
+        <a href='/events' class='button borderless link'>See all</a>
+    </div>
+
+    <ul class='section-list flex-column'>
+        <div class='event-simple-link-div flex-row'>
+            <img src='/images/examples/other-trail-running-image.jpg' class='big-image-logo'>
+
+            <div class='event-simple-link-info flex-column'>
+                <h3 class='bold'>Titulo del evento</h3>
+                <p>
+                    <i class='fa-regular fa-calendar'></i>
+                    Fecha del evento
+                </p>
+                <p class='thin'>
+                    <i class='fa-regular fa-compass'></i>
+                    Lugar del evento
+                </p>
+
+                <p>Deporte</p>
+            </div>
+        </div>
+
+        <div class='event-simple-link-div flex-row'>
+            <img src='/images/examples/other-trail-running-image.jpg' class='big-image-logo'>
+
+            <div class='event-simple-link-info flex-column'>
+                <h3 class='bold'>Titulo del evento</h3>
+                <p>
+                    <i class='fa-regular fa-calendar'></i>
+                    Fecha del evento
+                </p>
+                <p class='thin'>
+                    <i class='fa-regular fa-compass'></i>
+                    Lugar del evento
+                </p>
+
+                <p>Deporte</p>
+            </div>
+        </div>
+
+        <div class='event-simple-link-div flex-row'>
+            <img src='/images/examples/other-trail-running-image.jpg' class='big-image-logo'>
+
+            <div class='event-simple-link-info flex-column'>
+                <h3 class='bold'>Titulo del evento</h3>
+                <p>
+                    <i class='fa-regular fa-calendar'></i>
+                    Fecha del evento
+                </p>
+                <p class='thin'>
+                    <i class='fa-regular fa-compass'></i>
+                    Lugar del evento
+                </p>
+
+                <p>Deporte</p>
+            </div>
+        </div>
+    </ul>
 </section>
 {% endblock %}

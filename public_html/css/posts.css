@@ -13,15 +13,6 @@
     align-items: center;
 }
 
-.post-header-user-logo {
-    height: 46px;
-    border-radius: 1000px;
-    margin-right: 10px;
-    width: auto;
-    object-fit: cover;
-    border: solid 1px lightgray;
-}
-
 .post-sport, .post-location {
     font-size: 14px !important;
 }
