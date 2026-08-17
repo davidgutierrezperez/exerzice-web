@@ -4,7 +4,9 @@ define('BASE_PATH', dirname(__DIR__));
 
 require_once BASE_PATH . '/vendor/autoload.php';
 require_once BASE_PATH . '/init.php';
-require_once BASE_PATH . '/backend/controllers/ErrorController.php';
+
+use Controllers\ErrorController;
+use Controllers\HomeController;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/BaseController.php';
+namespace Controllers;
 
 class HomeController extends BaseController {
 

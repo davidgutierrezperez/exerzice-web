@@ -1,0 +1,41 @@
+{% block styles %}
+<link rel="stylesheet" href="/css/posts.css">
+{% endblock %}
+
+{% block post %}
+<div class='post'>
+        <div class='post-header flex-row'>
+            <img src='/images/examples/other_user_logo.png' class='image-logo'>
+            <div class='post-header-info flex-column'>
+                <div class='post-header-info-up flex-row'>
+                    <p class='post-user bold'>{{user.name}}</p>
+                    <p class='post-sport bold'>{{sport.name}}</p>
+                    <p class='post-location thin'>{{location}}</p>
+                </div>
+                <p>{{created_at}}</p>
+            </div>
+        </div> 
+
+        <div class='post-content'>
+            <p>{{content}}</p>
+            <img src='/images/examples/trail-running.jpg' class='post-content-image'>
+        </div>
+
+        <div class='post-interactions flex-row'>
+            <div class='post-interactions-likes flex-row'>
+                <form>
+                    <button type='submit borderless'>
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </form>
+                
+                <p>{{likes_counter}}</p>
+            </div>
+
+            <div class='post-interactions-comments flex-row'>
+                <i class="fa-regular fa-comment"></i>
+                <p>100</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
