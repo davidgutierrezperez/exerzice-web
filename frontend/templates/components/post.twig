@@ -2,23 +2,21 @@
 <link rel="stylesheet" href="/css/posts.css">
 {% endblock %}
 
-{% block post %}
 <div class='post'>
         <div class='post-header flex-row'>
             <img src='/images/examples/other_user_logo.png' class='image-logo'>
             <div class='post-header-info flex-column'>
                 <div class='post-header-info-up flex-row'>
-                    <p class='post-user bold'>{{user.name}}</p>
-                    <p class='post-sport bold'>{{sport.name}}</p>
-                    <p class='post-location thin'>{{location}}</p>
+                    <p class='post-user bold'>{{post.created_by.name}}</p>
+                    <p class='post-sport bold'>{{post.sport_name}}</p>
+                    <p class='post-location thin'>{{post.location}}</p>
                 </div>
-                <p>{{created_at}}</p>
+                <p>{{post.created_at}}</p>
             </div>
         </div> 
 
         <div class='post-content'>
-            <p>{{content}}</p>
-            <img src='/images/examples/trail-running.jpg' class='post-content-image'>
+            <p>{{post.content}}</p>
         </div>
 
         <div class='post-interactions flex-row'>
@@ -29,7 +27,7 @@
                     </button>
                 </form>
                 
-                <p>{{likes_counter}}</p>
+                <p>{{post.likes}}</p>
             </div>
 
             <div class='post-interactions-comments flex-row'>
@@ -37,5 +35,4 @@
                 <p>100</p>
             </div>
         </div>
-    </div>
-{% endblock %}
+</div>

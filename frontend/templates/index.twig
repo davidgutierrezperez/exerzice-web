@@ -8,10 +8,14 @@
 {% endblock %}
 
 {% block main_content %}
-<section class='posts-section flex-column'>
-    {% for post in posts %}
-        {% include 'components/post.twig' with post %}
-    {% endfor %}
+<section class="posts-section flex-column">
+    {% if posts %}
+        {% for post in posts %}
+            {% include 'components/post.twig' with { post: post } %}
+        {% endfor %}
+    {% else %}
+        <p class='error'>No se han encontrado publicaciones</p>
+    {% endif %}
 </section>
 {% endblock %}
 
@@ -22,72 +26,15 @@
         <a href='/communities' class='button borderless link'>See all</a>
     </div>
 
-    <ul class='section-list flex-column'>
-        <div class='community-simple-div-link flex-row'>
-            <img src='/images/examples/trail_running_logo.png' class='image-logo'>
-
-            <div class='community-basic-info flex-column'>
-                <p class='bold'>Titulo de comunidad</p>
-                <p class='thin subinfo'>Número de miembros</p>
-            </div>
-
-            <form class='form-join-community flex-row'>
-                <button type='submit' class='button button-padding'>Unirse</button>
-            </form>
-        </div>
-
-        <div class='community-simple-div-link flex-row'>
-            <img src='/images/examples/trail_running_logo.png' class='image-logo'>
-
-            <div class='community-basic-info flex-column'>
-                <p class='bold'>Titulo de comunidad</p>
-                <p class='thin subinfo'>Número de miembros</p>
-            </div>
-
-            <form class='form-join-community flex-row'>
-                <button type='submit' class='button button-padding'>Unirse</button>
-            </form>
-        </div>
-
-        <div class='community-simple-div-link flex-row'>
-            <img src='/images/examples/trail_running_logo.png' class='image-logo'>
-
-            <div class='community-basic-info flex-column'>
-                <p class='bold'>Titulo de comunidad</p>
-                <p class='thin subinfo'>Número de miembros</p>
-            </div>
-
-            <form class='form-join-community flex-row'>
-                <button type='submit' class='button button-padding'>Unirse</button>
-            </form>
-        </div>
-
-        <div class='community-simple-div-link flex-row'>
-            <img src='/images/examples/trail_running_logo.png' class='image-logo'>
-
-            <div class='community-basic-info flex-column'>
-                <p class='bold'>Titulo de comunidad</p>
-                <p class='thin subinfo'>Número de miembros</p>
-            </div>
-
-            <form class='form-join-community flex-row'>
-                <button type='submit' class='button button-padding'>Unirse</button>
-            </form>
-        </div>
-
-        <div class='community-simple-div-link flex-row'>
-            <img src='/images/examples/trail_running_logo.png' class='image-logo'>
-
-            <div class='community-basic-info flex-column'>
-                <p class='bold'>Titulo de comunidad</p>
-                <p class='thin subinfo'>Número de miembros</p>
-            </div>
-
-            <form class='form-join-community flex-row'>
-                <button type='submit' class='button button-padding'>Unirse</button>
-            </form>
-        </div>
-    </ul>
+    {% if spaces %}
+        <ul class='section-list flex-column'>
+            {% for space in spaces %}
+                {% include 'components/spaces.twig' with {space: space} %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class='error'>No se han encontrado comunidades</p>
+    {% endif %}
 </section>
 
 <section class='next-events right-aside-section'>
