@@ -1,14 +1,14 @@
-.common-nav ul {
+.aside-nav ul {
     font-size: 18px;
     gap: 25px;
 }
 
-.common-nav ul li {
+.aside-nav ul li {
     border: solid 1px transparent;
     padding: 5px 10px;
 }
 
-.common-nav ul li:hover {
+.aside-nav ul li:hover {
     border-radius: 1000px;
     border-color: black;
     background-color: lightgray;
