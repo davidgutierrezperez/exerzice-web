@@ -1,0 +1,14 @@
+{% block styles %}
+	<div class='community-simple-div-link flex-row'>
+		<img src='/images/examples/trail_running_logo.png' class='image-logo'>
+
+		<div class='community-basic-info flex-column'>
+			<p class='bold'>{{space.name}}</p>
+			<p class='thin subinfo'>{{space.followers}} followers</p>
+		</div>
+
+		<form class='form-join-community flex-row'>
+			<button type='submit' class='button button-padding'>Unirse</button>
+		</form>
+	</div>
+{% endblock %}

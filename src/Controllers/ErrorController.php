@@ -1,7 +1,9 @@
 <?php
 
-require_once __DIR__ . '/BaseController.php';
-require_once __DIR__ . '/../infraestructure/http/ErrorRouteType.php';
+namespace Controllers;
+
+use Controllers\BaseController;
+use Infrastructure\Http\ErrorRouteType;
 
 class ErrorController extends BaseController {
 

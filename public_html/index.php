@@ -4,7 +4,11 @@ define('BASE_PATH', dirname(__DIR__));
 
 require_once BASE_PATH . '/vendor/autoload.php';
 require_once BASE_PATH . '/init.php';
-require_once BASE_PATH . '/backend/controllers/ErrorController.php';
+
+use Application\AuthenticationException;
+use Application\AuthoritationExcepcion;
+use Controllers\ErrorController;
+use Controllers\HomeController;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -47,17 +51,23 @@ switch ($routerState) {
         (new ErrorController($twig))->forbidden();
         break;
     case FastRoute\Dispatcher::FOUND:
-        $handler = $routeInfo[1]; 
-        $vars = $routeInfo[2];   
+        try {
+            $handler = $routeInfo[1]; 
+            $vars = $routeInfo[2];   
 
-        // Getting the controller and method to call
-        [$controllerName, $method] = explode('@', $handler);
+            // Getting the controller and method to call
+            [$controllerName, $method] = explode('@', $handler);
 
-        // Controller instancing
-        $controller = new $controllerName($twig);
+            // Controller instancing
+            $controller = new $controllerName($twig);
 
-        // Calling the method to execute
-        $controller->$method(...array_values($vars));
+            // Calling the method to execute
+            $controller->$method(...array_values($vars));
+        } catch (AuthenticationException){
+            header('Location: /login');
+        } catch (AuthoritationExcepcion){
+            header('Location: /forbidden');
+        }
 
         break;
 }

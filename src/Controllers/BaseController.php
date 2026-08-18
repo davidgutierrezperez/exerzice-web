@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+namespace Controllers;
+use Twig;
 
 class BaseController {
     /**
