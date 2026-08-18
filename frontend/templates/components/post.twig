@@ -1,38 +1,29 @@
 {% block styles %}
-<link rel="stylesheet" href="/css/posts.css">
+<link rel="stylesheet" href="/css/components/posts.css">
 {% endblock %}
 
-<div class='post'>
-        <div class='post-header flex-row'>
-            <img src='/images/examples/other_user_logo.png' class='image-logo'>
-            <div class='post-header-info flex-column'>
-                <div class='post-header-info-up flex-row'>
-                    <p class='post-user bold'>{{post.created_by.name}}</p>
-                    <p class='post-sport bold'>{{post.sport_name}}</p>
-                    <p class='post-location thin'>{{post.location}}</p>
-                </div>
-                <p>{{post.created_at}}</p>
-            </div>
-        </div> 
+<div class='post flex-column'>
+    <div class='post-main-content flex-row'>
+        <img class='user-picture' src='/images/examples/other_user_logo.png'>
 
-        <div class='post-content'>
-            <p>{{post.content}}</p>
+        <div class='post-info flex-column'>
+            <div calss='post-info-header flex-column'>
+                <h2 class='user-name'>{{ post.created_by.name }}</h2>
+                <p class='post-creation-date'>{{ post.created_at }}</p>
+            </div>
+
+            <p class='post-content'>{{ post.content }}</p>
         </div>
+    </div>
 
-        <div class='post-interactions flex-row'>
-            <div class='post-interactions-likes flex-row'>
-                <form>
-                    <button type='submit borderless'>
-                        <i class="fa-regular fa-heart"></i>
-                    </button>
-                </form>
-                
-                <p>{{post.likes}}</p>
-            </div>
+    <div class='post-media'>
+        <img class='post-image-media' src='/images/examples/trail-running.jpg'>
+    </div>
 
-            <div class='post-interactions-comments flex-row'>
-                <i class="fa-regular fa-comment"></i>
-                <p>100</p>
-            </div>
+    <div class='post-interaction'>
+        <div class='icon-info flex-row'>
+            <i class="fa-regular fa-heart"></i>
+            <p>{{ post.likes }}</p>
         </div>
+    </div>
 </div>

@@ -135,7 +135,6 @@ ul {
 
 .left-aside {
     position: absolute;
-    right: calc(50% + 400px + 32px);
     width: 250px;
     margin-top: 40px;
 }

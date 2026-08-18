@@ -1,12 +1,8 @@
-{% extends 'base.twig' %}
-
 {% block styles %}
-    {{ parent() }}
-    <link rel="stylesheet" href="/css/common_base.css">
+    <link rel='stylesheet' href='/css/components/navbar/aside_nav.css'>
 {% endblock %}
 
-{% block left_aside %}
-<nav class='common-nav'>
+<nav class='aside-nav'>
     <ul class='flex-column'>
         <li>
             <a href='/' class='link-with-icon link flex-row'>
@@ -34,12 +30,3 @@
         </li>
     </ul>
 </nav>
-{% endblock %}
-
-{% block main_content %}
-
-{% endblock %}
-
-{% block right_aside %}
-
-{% endblock %}
