@@ -44,44 +44,8 @@
 		<title>Exerzice</title>
 	</head>
 	<body>
-		<header>
-			<nav class='flex-row'>
-				<img src='/images/exerzice_logo.png'>
-				
-				<form class="search-form">
-					<input
-						type="search"
-						class="search-bar"
-						placeholder="Search..."
-					>
+		{% block main_content %}
 
-					<button type="submit" class="search-button borderless no-background">
-						<i class="fa-solid fa-magnifying-glass"></i>
-					</button>
-				</form>
-
-				<a href='/login' class='button button-padding'>Iniciar sesion</a>
-			</nav>
-		</header>
-
-		<div class='page flex-row'>
-			<aside class='left-aside flex-column'>
-				{% block left_aside %}
-
-				{% endblock %}
-			</aside>
-
-			<div class='main-content'>
-				{% block main_content %}
-
-				{% endblock %}
-			</div>
-
-			<aside class='right-aside flex-column'>
-				{% block right_aside %}
-
-				{% endblock %}
-			</aside>
-		</div>
+		{% endblock %}
 	</body>
 </html>
