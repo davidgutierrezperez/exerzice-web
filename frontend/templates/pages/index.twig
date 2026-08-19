@@ -1,27 +1,28 @@
 {% extends 'base-headered.twig' %}
 
 {% block styles %}
-    {{ parent() }}
-    <link rel='stylesheet' href='/css/pages/index.css'>
+	{{ parent() }}
+	<link rel='stylesheet' href='/css/pages/index.css'>
 {% endblock %}
 
 {% block main_content %}
+	<div class='layout'>
+		<aside class='aside-nav'>
+			{% include 'components/navigation/aside-nav.twig' %}
+		</aside>
 
-    <aside>
-        {% include 'components/navigation/aside-nav.twig' %}
-    </aside>
+		<section class='posts-section'>
+			{% if posts %}
+				{% for post in posts %}
+					{% include 'components/posts/post.twig' with {post: post} %}
+				{% endfor %}
+			{% else %}
+				<p class='error'>No posts were found</p>
+			{% endif %}
+		</section>
 
-    <section class='posts-section'>
-        {% if posts %}
-            {% for post in posts %}
-                {% include 'components/posts/post.twig' with {post: post} %}
-            {% endfor %}
-        {% else %}
-            <p class='error'>No posts were found</p>
-        {% endif %}
-    </section>
-
-    <aside>
-        {% include 'components/community/community-summary-list.twig' with { communities: spaces } %}
-    </aside>
+		<aside class='aside-nav'>
+			{% include 'components/community/community-summary-list.twig' with {communities: spaces} %}
+		</aside>
+	</div>
 {% endblock %}

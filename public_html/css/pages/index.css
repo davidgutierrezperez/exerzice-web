@@ -1,4 +1,8 @@
 .posts-section {
-    max-width: 800px;
+    width: 700px;
     margin: 0 auto;
+}
+
+.aside-nav {
+    padding: 10px 30px;
 }
