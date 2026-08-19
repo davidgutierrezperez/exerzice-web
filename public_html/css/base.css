@@ -10,7 +10,7 @@
   --text-secondary: #747789;
 
   --primary: #6C35F2;
-  --primary-soft: #F2EDFF;
+  --primary-soft: #784de2;
 
   --blue: blue;
 
@@ -88,6 +88,11 @@ input {
     justify-content: space-evenly;
 }
 
+.justify-around {
+    display:flex;
+    justify-content: space-around;
+}
+
 .text-secundary {
     color: var(--text-secondary);
 }
@@ -126,4 +131,18 @@ input {
 
 .medium-list-title {
     font-size: 16px;
+}
+
+.background-button {
+    padding: 10px 30px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 999px;
+
+    transition: 0.3s ease-in-out;
+}
+
+.background-button:hover {
+    color: white;
+    background-color: var(--primary-soft);
 }
