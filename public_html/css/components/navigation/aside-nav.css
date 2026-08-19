@@ -8,9 +8,6 @@
 }
 
 .nav-list a:hover > svg {
-    stroke: var(--primary);
-}
-
-svg {
-    stroke-width: 1 !important;
+    stroke: var(--primary) !important;
+    stroke-width: 2 !important;
 }
