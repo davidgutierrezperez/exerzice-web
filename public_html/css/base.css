@@ -88,6 +88,17 @@ input {
     justify-content: space-evenly;
 }
 
-.text-secondary {
+.text-secundary {
     color: var(--text-secondary);
+}
+
+.small-image-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.title-media-content {
+    font-size: 18px;
 }

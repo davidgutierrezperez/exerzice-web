@@ -1,0 +1,16 @@
+.community-summary {
+    width: 100%;
+    gap: 20px;
+}
+
+.title-media-content, p {
+    font-size: 14px;
+}
+
+.community-summary-info {
+    gap: 4px;
+}
+
+.community-summary-members-info {
+    gap: 20px;
+}
