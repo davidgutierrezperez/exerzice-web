@@ -66,6 +66,11 @@ svg {
     transition: 0.2s ease-in-out;
 }
 
+svg:hover {
+    stroke: var(--primary) !important;
+    stroke-width: 2;
+}
+
 button {
     border: none;
 }
