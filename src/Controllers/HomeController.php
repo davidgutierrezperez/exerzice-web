@@ -45,7 +45,7 @@ class HomeController extends BaseController {
         $posts = $postsResponse->getValue();
         $spaces = $spacesResponse->getValue();
 
-        echo $this->twig->render('index.twig', ['posts' => $posts, 'spaces' => $spaces]);
+        echo $this->twig->render('pages/index.twig', ['posts' => $posts, 'spaces' => $spaces]);
     }
 }
 

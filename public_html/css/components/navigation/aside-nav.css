@@ -1,0 +1,23 @@
+.nav-list {
+    gap: 40px;
+}
+
+.nav-list a {
+    font-size: 18px;
+    gap: 30px;
+}
+
+svg {
+    height: 24px;
+    width: 24px;
+    
+    transition: 0.2s ease-in-out;
+}
+
+li svg {
+    stroke: var(--text-secondary);
+}
+
+.nav-list a:hover > svg {
+    stroke: var(--primary);
+}
