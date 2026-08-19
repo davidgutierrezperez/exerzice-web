@@ -7,17 +7,10 @@
     gap: 30px;
 }
 
-svg {
-    height: 24px;
-    width: 24px;
-    
-    transition: 0.2s ease-in-out;
-}
-
-li svg {
-    stroke: var(--text-secondary);
-}
-
 .nav-list a:hover > svg {
     stroke: var(--primary);
+}
+
+svg {
+    stroke-width: 1 !important;
 }
