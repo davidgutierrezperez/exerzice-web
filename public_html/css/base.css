@@ -6,16 +6,20 @@
 }
 
 :root {
-  --text-primary: #111111;
-  --text-secondary: #747789;
+    --text-primary: #111111;
+    --text-secondary: #747789;
 
-  --primary: #6C35F2;
-  --primary-soft: #784de2;
+    --primary: #6C35F2;
+    --primary-soft: #784de2;
 
-  --blue: blue;
+    --blue: blue;
 
-  --background: #FFFFFF;
-  --border: #E5E5EA;
+    --background: #FFFFFF;
+    --border: #E5E5EA;
+
+    --layout-columns: 220px 2fr 320px;
+    --layout-gap: 32px;
+    --layout-width: 1400px;
 }
 
 body {
@@ -145,4 +149,21 @@ input {
 .background-button:hover {
     color: white;
     background-color: var(--primary-soft);
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: var(--layout-columns);
+    gap: var(--layout-gap);
+
+    max-width: var(--layout-width);
+    margin: 0 auto;
+}
+
+a, button {
+    width: fit-content;
+}
+
+.align-horizontaly {
+    margin: 0 auto;
 }
