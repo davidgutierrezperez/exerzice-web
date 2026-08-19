@@ -2,6 +2,7 @@
 
 {% block styles %}
     {{ parent() }}
+    <link rel='stylesheet' href='/css/pages/index.css'>
 {% endblock %}
 
 {% block content %}
@@ -9,4 +10,14 @@
         {% include 'components/search/search-bar.twig' %}
     </header>
     {% include 'components/navigation/aside-nav.twig' %}
+
+    <section class='posts-section'>
+        {% if posts %}
+            {% for post in posts %}
+                {% include 'components/posts/post.twig' with {post: post} %}
+            {% endfor %}
+        {% else %}
+            <p class='error'>No posts were found</p>
+        {% endif %}
+    </section>
 {% endblock %}
