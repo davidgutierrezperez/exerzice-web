@@ -1,0 +1,18 @@
+<section class='section-near-communities-summary flex-column medium-gap'>
+	<h3 class='uppercase medium-list-title'>Communities</h3>
+
+	{% if communities %}
+		<ul class='medium-gap flex-column'>
+			{% for community in communities %}
+				<li>
+					<a href='/community/{{ community.id }}' class='community-summary-link'>
+						{% include 'components/community/community-summary.twig' with {community: community} %}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p class='text-secundary'>It was not possible to get the communities near you</p>
+	{% endif %}
+
+</section>

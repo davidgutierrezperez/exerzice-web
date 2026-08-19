@@ -100,5 +100,30 @@ input {
 }
 
 .title-media-content {
+    color: var(--text-primary);
     font-size: 18px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.big-gap {
+    gap: 20px;
+}
+
+.small-gap {
+    gap: 10px;
+}
+
+.tiny-gap {
+    gap: 1px;
+}
+
+.medium-gap {
+    gap: 15px;
+}
+
+.medium-list-title {
+    font-size: 16px;
 }

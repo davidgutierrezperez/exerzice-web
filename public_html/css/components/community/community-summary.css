@@ -11,6 +11,14 @@
     gap: 4px;
 }
 
-.community-summary-members-info {
-    gap: 20px;
+svg:hover {
+    stroke: var(--text-secondary) !important;
+}
+
+.community-summary-link h2 {
+    transition: 0.2s ease-in-out;
+}
+
+.community-summary-link:hover h2 {
+    color: var(--primary);
 }
