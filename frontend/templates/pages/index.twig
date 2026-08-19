@@ -1,15 +1,15 @@
-{% extends 'base.twig' %}
+{% extends 'base-headered.twig' %}
 
 {% block styles %}
     {{ parent() }}
     <link rel='stylesheet' href='/css/pages/index.css'>
 {% endblock %}
 
-{% block content %}
-    <header>
-        {% include 'components/search/search-bar.twig' %}
-    </header>
-    {% include 'components/navigation/aside-nav.twig' %}
+{% block main_content %}
+
+    <aside>
+        {% include 'components/navigation/aside-nav.twig' %}
+    </aside>
 
     <section class='posts-section'>
         {% if posts %}
