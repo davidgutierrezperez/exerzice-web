@@ -1,0 +1,16 @@
+{% block styles %}
+    <link rel='stylesheet' href='/css/components/community/community-summary.css'>
+{% endblock %}
+
+<div class='community-summary flex-row align-items'>
+    <img class='small-image-logo' src='/images/examples/other-trail-running-image.jpg'>
+
+    <div class='flex-column community-summary-info justify-evently'>
+        <h2 class='title-media-content'>{{ community.name }}</h2>
+
+        <div class='community-summary-members-info flex-row text-secundary'>
+            <p>{{ community.followers }} followers</p>
+            <p>{{ community.sport.name }}</p>
+        </div>
+    </div>
+</div>

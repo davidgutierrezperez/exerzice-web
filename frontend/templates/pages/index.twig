@@ -20,4 +20,14 @@
             <p class='error'>No posts were found</p>
         {% endif %}
     </section>
+
+    <aside>
+        {% if spaces %}
+            {% for space in spaces %}
+                {% include 'components/community/community-summary.twig' with {community: space} %}
+            {% endfor %}
+        {% else %}
+            <p class='error'>No communities were found</p>
+        {% endif %}
+    </aside>
 {% endblock %}
