@@ -22,12 +22,6 @@
     </section>
 
     <aside>
-        {% if spaces %}
-            {% for space in spaces %}
-                {% include 'components/community/community-summary.twig' with {community: space} %}
-            {% endfor %}
-        {% else %}
-            <p class='error'>No communities were found</p>
-        {% endif %}
+        {% include 'components/community/community-summary-list.twig' with { communities: spaces } %}
     </aside>
 {% endblock %}
