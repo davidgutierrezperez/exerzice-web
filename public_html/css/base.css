@@ -142,18 +142,32 @@ input {
     font-size: 16px;
 }
 
+.big-button {
+    padding: 10px 30px;
+    border-radius: 999px;
+    transition: 0.3s ease-in-out;
+}
+
 .background-button {
     padding: 10px 30px;
     background-color: var(--primary);
     color: white;
-    border-radius: 999px;
-
-    transition: 0.3s ease-in-out;
 }
 
 .background-button:hover {
-    color: white;
     background-color: var(--primary-soft);
+    color: white;
+}
+
+.no-background-button {
+    background-color: transparent;
+    color: var(--primary);
+    border: solid 1px var(--primary);
+}
+
+.no-background-button:hover {
+    border-color: var(--primary-soft);
+    color: var(--primary-soft);
 }
 
 .layout {
@@ -171,4 +185,8 @@ a, button {
 
 .align-horizontaly {
     margin: 0 auto;
+}
+
+.company-logo {
+    max-height: 50px;
 }
