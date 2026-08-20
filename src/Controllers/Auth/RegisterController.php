@@ -6,12 +6,12 @@ use Controllers\BaseController;
 use Twig;
 
 /**
- * The class LoginController represents a controller component that handles the login of users.
+ * The class RegisterController represents a controller component that handles the register of users.
  */
-final class LoginController extends BaseController {
+final class RegisterController extends BaseController {
 
     /**
-     * Default constructor of the class LoginController.
+     * Default constructor of the class RegisterController.
      * @param Twig\Environment $twig Twig environment.
      */
     public function __construct(Twig\Environment $twig) {
@@ -19,11 +19,11 @@ final class LoginController extends BaseController {
     }
 
     /**
-     * Renders the login page.
+     * Renders the register page.
      * @return void
      */
     public function index(): void {
-        echo $this->twig->render('pages/auth/login.twig');
+        echo $this->twig->render('pages/auth/register.twig');
     }
 }
 
