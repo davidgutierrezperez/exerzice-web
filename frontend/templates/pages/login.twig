@@ -1,0 +1,48 @@
+{% extends 'base-headered.twig' %}
+
+{% block styles %}
+	{{ parent() }}
+	<link rel='stylesheet' href='/css/pages/login.css'>
+{% endblock %}
+
+{% block scripts %}
+	<script src="https://accounts.google.com/gsi/client" async defer></script>
+{% endblock %}
+
+{% block main_content %}
+	<section class='section-login flex-column align-items big-gap justify-center'>
+
+        <!-- LOGIN CONTENT DIV -->
+		<div class='login-content flex-column align-items justify-center big-gap'>
+
+            <!-- WELCOME TEXT -->
+			<div class='login-welcome-text flex-column medium-gap'>
+
+                <!-- WELCOME TITLE -->
+				<h1>Welcome to Exerzice</h1>
+
+                <!-- WELCOME PARAGRAPH -->
+				<div class='login-paragraph tiny-gap flex-column align-items text-align'>
+					<p class='text-secundary'>The community for real athletes.</p>
+					<p class='text-secundary'>Events, groups and people like you.</p>
+				</div>
+			</div>
+
+            <!-- GOOGLE API SIGNIN METHOD -->
+			<div id="g_id_onload" data-client_id="299005082298-behm81dc27iofbhc1a2bdsr26h1bnfj5.apps.googleusercontent.com" data-callback="handleCredentialResponse"></div>
+
+			<div class="g_id_signin signin-method no-overflow" data-type="standard" data-theme="outline" data-size="large" data-text="signin_with" data-width="450"></div>
+
+            <!-- TEXT UNDER SIGNIN METHOD -->
+			<p class='text-secundary'>
+                When login, you accept the
+				<a href='/service-terms' class='primary-link'>Terms of service</a>
+				and
+				<a class='primary-link' href='/privacy-politics'>Privacy politics</a>
+			</p>
+		</div>
+
+        <!-- IMAGE -->
+		<img src='/images/pages/login/axel-login.jpeg'>
+	</section>
+{% endblock %}
