@@ -17,7 +17,7 @@
     --background: #FFFFFF;
     --border: #E5E5EA;
 
-    --layout-columns: 220px 2fr 320px;
+    --layout-columns: 320px 2fr 320px;
     --layout-gap: 32px;
     --layout-width: 1400px;
 }
@@ -25,6 +25,10 @@
 body {
     background-color: var(--background);
     font-family: "Inter", sans-serif;
+}
+
+.no-overflow {
+    overflow-y: hidden;
 }
 
 .flex-row {
@@ -40,6 +44,10 @@ body {
 .align-items {
     display:flex;
     align-items: center;
+}
+
+.align-text {
+    text-align: center;
 }
 
 ul {
@@ -100,6 +108,11 @@ input {
 .justify-between {
     display: flex;
     justify-content: space-between;
+}
+
+.justify-center {
+    display:flex;
+    justify-content: center;
 }
 
 .text-secundary {
@@ -189,4 +202,8 @@ a, button {
 
 .company-logo {
     max-height: 50px;
+}
+
+.primary-link {
+    color: var(--primary);
 }
