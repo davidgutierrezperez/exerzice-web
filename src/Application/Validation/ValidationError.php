@@ -4,4 +4,3 @@ namespace Application\Validation;
 
 interface ValidationError {}
 
-?>

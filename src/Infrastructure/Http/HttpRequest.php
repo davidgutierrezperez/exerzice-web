@@ -54,6 +54,4 @@ final class HttpRequest {
     public function value(string $key): mixed {
         return $this->body[$key] ?? null;
     }
-}
-
-?>   
+}   

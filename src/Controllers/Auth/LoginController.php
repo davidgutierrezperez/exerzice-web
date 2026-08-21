@@ -6,6 +6,7 @@ use Api\Fetching\LoginFetcher;
 use Controllers\BaseController;
 use Infrastructure\Http\HttpCode;
 use Infrastructure\Http\HttpRequest;
+use Infrastructure\Http\RouteRedirector;
 use Twig;
 
 /**
@@ -35,18 +36,19 @@ final class LoginController extends BaseController {
 
     public function login(): void {
         $httpRequest = new HttpRequest();
-
         $authToken = $httpRequest->input('credential');
+
         $response = $this->fetcher->fetchLogin($authToken);
+        $statusCode = $response->getCode();
 
-        $value = $response->getValue();
-
-        error_log("VALUE OF RESPONSE: " . print_r($value, true));
-
-        if ($response->getCode() == HttpCode::SUCCESS){
-            error_log("EXITO");
-        } else error_log("FRACASO");
+        if ($statusCode == HttpCode::BAD_REQUEST){
+            RouteRedirector::redirect('/404');
+            exit;
+        }
+        else {
+            RouteRedirector::redirect('/');
+            exit;
+        }
     }  
 }
 
-?>

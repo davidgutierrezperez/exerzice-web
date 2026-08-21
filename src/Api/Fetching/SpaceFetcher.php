@@ -41,4 +41,3 @@ final class SpaceFetcher extends ApiFetcher {
     }
 }
 
-?>

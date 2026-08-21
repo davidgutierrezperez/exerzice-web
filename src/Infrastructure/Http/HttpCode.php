@@ -35,4 +35,3 @@ enum HttpCode: int {
     case INTERNAL_SERVER_ERROR = 500;
 }
 
-?>

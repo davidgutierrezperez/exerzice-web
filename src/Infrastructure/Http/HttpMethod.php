@@ -28,4 +28,3 @@ enum HttpMethod: string {
     case PUT = 'PUT';
 }
 
-?>

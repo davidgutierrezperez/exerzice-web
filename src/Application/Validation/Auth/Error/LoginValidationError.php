@@ -8,4 +8,3 @@ enum LoginValidationError: string implements ValidationError {
     case NO_REGISTERED_USER = 'no_registered_user';
 }
 
-?>
