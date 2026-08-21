@@ -12,6 +12,9 @@ enum HttpCode: int {
      */
     case SUCCESS = 200;
 
+    /**
+     * Bad request code.
+     */
     case BAD_REQUEST = 400;
 
     /**

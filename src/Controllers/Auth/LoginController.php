@@ -40,6 +40,10 @@ final class LoginController extends BaseController {
         echo $this->twig->render('pages/auth/login.twig');
     }
 
+    /**
+     * Handles the logging of a registered user.
+     * @return void
+     */
     public function login(): void {
         $httpRequest = new HttpRequest();
         $authToken = $httpRequest->input('credential');
@@ -58,6 +62,11 @@ final class LoginController extends BaseController {
         RouteRedirector::redirect('/');
     }  
 
+    /**
+     * Handles an unsuccessful logging process.
+     * @param ResolveResult $result Result of a HTTP response data resolving process.
+     * @return void
+     */
     private function handleUnsuccessfulLogin(ResolveResult $result): void {
         $errors = $result->getErrors();
         if (!$errors) return;
