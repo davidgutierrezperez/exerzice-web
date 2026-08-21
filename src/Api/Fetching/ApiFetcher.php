@@ -8,6 +8,7 @@ use Application\Security\AuthorizationException;
 use Infrastructure\Http\HttpResponse;
 use Infrastructure\Http\HttpCode;
 use Infrastructure\Http\HttpFetchingRequest;
+use Infrastructure\Http\HttpMethod;
 use Infrastructure\Http\HttpQueryBuilder;
 
 /**
@@ -21,14 +22,12 @@ class ApiFetcher {
      * @return HttpResponse HTTP response.
      */
     protected function fetch(HttpFetchingRequest $request): HttpResponse {
-        $method = $request->getMethod()->value;
+        $method = $request->getMethod();
         $query = $request->getQuery();
         $params = $request->getParams();
 
-        $response = fetch($query, [
-            'method' => $method,
-            'json' => $params
-        ]);
+        $options = $this->buildOptions($method, $params);
+        $response = fetch($query, $options);
 
         $statusCode = $response->status();
         $data = $response->json();
@@ -50,10 +49,25 @@ class ApiFetcher {
         return ApiUrl::url() . $baseUrl . '?' . $queryParams;
     }
 
+    private function buildOptions(HttpMethod $method, array $params): array {
+        $options = [
+            'method' => $method->value,
+            'json' => $params
+        ];
+
+        if (isset($_COOKIE['PHPSESSID'])) {
+            $options['headers'] = [
+                'Cookie' => 'PHPSESSID=' . $_COOKIE['PHPSESSID']
+            ];
+        }
+
+        return $options;
+    }
+
     /**
      * Checks the status code of a HTTP response and throws an exception if needed.
      * @param int $statusCode Status code of an HTTP response.
-     * @throws AuthoritationExcepcion
+     * @throws AuthorizationException
      * @throws AuthenticationException
      * @return void
      */

@@ -6,7 +6,6 @@ use Api\Fetching\LoginFetcher;
 use Controllers\BaseController;
 use Infrastructure\Http\HttpCode;
 use Infrastructure\Http\HttpRequest;
-use Application\Security\AuthoritationExcepcion;
 use Twig;
 
 /**
@@ -40,11 +39,13 @@ final class LoginController extends BaseController {
         $authToken = $httpRequest->input('credential');
         $response = $this->fetcher->fetchLogin($authToken);
 
+        $value = $response->getValue();
+
+        error_log("VALUE OF RESPONSE: " . print_r($value, true));
+
         if ($response->getCode() == HttpCode::SUCCESS){
             error_log("EXITO");
-        }
-
-        error_log("FRACASO");
+        } else error_log("FRACASO");
     }  
 }
 

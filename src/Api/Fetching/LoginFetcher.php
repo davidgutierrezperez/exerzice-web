@@ -2,6 +2,8 @@
 
 namespace Api\Fetching;
 
+use Infrastructure\Http\HttpFetchingRequest;
+use Infrastructure\Http\HttpMethod;
 use Infrastructure\Http\HttpResponse;
 
 final class LoginFetcher extends ApiFetcher {
@@ -13,7 +15,9 @@ final class LoginFetcher extends ApiFetcher {
         ];
 
         $query = $this->buildFetchQuery(self::$BASE_URL);
-        return $this->fetch($query, $params);
+        $fetchingRequest = new HttpFetchingRequest(HttpMethod::POST, $query, $params);
+        
+        return $this->fetch($fetchingRequest);
     }
 }
 
