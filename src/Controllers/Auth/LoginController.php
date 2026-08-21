@@ -11,6 +11,7 @@ use Infrastructure\Http\HttpRequest;
 use Infrastructure\Http\RouteRedirector;
 use Infrastructure\Resolver\Auth\LoginResolverError;
 use Infrastructure\Resolver\Auth\LoginResponseResolver;
+use Infrastructure\Resolver\ResolveResult;
 use Ramsey\Uuid\Uuid;
 use Twig;
 
@@ -48,20 +49,23 @@ final class LoginController extends BaseController {
 
         $responseResolve = new LoginResponseResolver()->resolve($responseData);
 
-        if (!$responseResolve->isSuccess()){
-            $errors = $responseResolve->getErrors();
-
-            if (in_array(LoginResolverError::NO_REGISTERED_USER, $errors, true))
-                RouteRedirector::redirect('/404');
-
-            RouteRedirector::redirect('/login');
-        }
-            
+        if (!$responseResolve->isSuccess())
+            $this->handleUnsuccessfulLogin($responseResolve);
 
         $userEntity = $responseResolve->value();
         UserSession::login($userEntity);
 
         RouteRedirector::redirect('/');
     }  
+
+    private function handleUnsuccessfulLogin(ResolveResult $result): void {
+        $errors = $result->getErrors();
+        if (!$errors) return;
+
+        if (in_array(LoginResolverError::NO_REGISTERED_USER, $errors, true))
+            RouteRedirector::redirect('/404');
+
+        RouteRedirector::redirect('/login');
+    }
 }
 
