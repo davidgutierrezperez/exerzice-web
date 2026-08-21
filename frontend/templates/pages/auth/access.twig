@@ -29,7 +29,11 @@
 			</div>
 
             <!-- GOOGLE API SIGNIN METHOD -->
-			<div id="g_id_onload" data-client_id="299005082298-behm81dc27iofbhc1a2bdsr26h1bnfj5.apps.googleusercontent.com" data-callback="handleCredentialResponse"></div>
+			<div id="g_id_onload" 
+				 data-client_id="299005082298-behm81dc27iofbhc1a2bdsr26h1bnfj5.apps.googleusercontent.com" 
+				 data-ux_mode="redirect"
+				 data-login_uri='/{{ handle }}'>
+			</div>
 
 			<div class="g_id_signin signin-method no-overflow" data-type="standard" data-theme="outline" data-size="large" data-text="{{ type }}_with" data-width="450"></div>
 

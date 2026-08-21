@@ -1,6 +1,6 @@
 <?php 
 
-namespace Application;
+namespace Application\Security;
 
 use Exception;
 
@@ -8,4 +8,4 @@ use Exception;
  * The class AuthoritationExcepcion represents an exception component when an 
  * authoritation error has happend.
  */
-final class AuthoritationExcepcion extends Exception {}
+final class AuthorizationException extends Exception {}

@@ -5,10 +5,9 @@ define('BASE_PATH', dirname(__DIR__));
 require_once BASE_PATH . '/vendor/autoload.php';
 require_once BASE_PATH . '/init.php';
 
-use Application\AuthenticationException;
-use Application\AuthoritationExcepcion;
+use Application\Security\AuthenticationException;
+use Application\Security\AuthorizationException;
 use Controllers\ErrorController;
-use Controllers\HomeController;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -65,7 +64,7 @@ switch ($routerState) {
             $controller->$method(...array_values($vars));
         } catch (AuthenticationException){
             header('Location: /login');
-        } catch (AuthoritationExcepcion){
+        } catch (AuthorizationException){
             header('Location: /forbidden');
         }
 

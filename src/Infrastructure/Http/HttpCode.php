@@ -12,6 +12,8 @@ enum HttpCode: int {
      */
     case SUCCESS = 200;
 
+    case BAD_REQUEST = 400;
+
     /**
      * Unauthorized code.
      */
