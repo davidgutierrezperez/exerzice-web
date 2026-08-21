@@ -1,6 +1,6 @@
 <?php 
 
-namespace Application;
+namespace Application\Security;
 
 use Exception;
 
@@ -10,4 +10,3 @@ use Exception;
  */
 final class AuthenticationException extends Exception {}
 
-?>

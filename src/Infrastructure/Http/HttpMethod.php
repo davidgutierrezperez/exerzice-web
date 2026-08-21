@@ -3,7 +3,7 @@
 namespace Infrastructure\Http;
 
 /**
- * The num HttpMethod contains the HTTP methods available.
+ * The enum HttpMethod contains the HTTP methods available.
  */
 enum HttpMethod: string {
 
@@ -28,4 +28,3 @@ enum HttpMethod: string {
     case PUT = 'PUT';
 }
 
-?>

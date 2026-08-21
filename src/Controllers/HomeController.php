@@ -3,8 +3,8 @@
 namespace Controllers;
 
 use Twig;
-use Api\PostFetcher;
-use Api\SpaceFetcher;
+use Api\Fetching\PostFetcher;
+use Api\Fetching\SpaceFetcher;
 
 /**
  * The class HomeController represents the controller component that handles the home page.
@@ -44,9 +44,9 @@ class HomeController extends BaseController {
 
         $posts = $postsResponse->getValue();
         $spaces = $spacesResponse->getValue();
+    
 
         echo $this->twig->render('pages/index.twig', ['posts' => $posts, 'spaces' => $spaces]);
     }
 }
 
-?>

@@ -13,6 +13,11 @@ enum HttpCode: int {
     case SUCCESS = 200;
 
     /**
+     * Bad request code.
+     */
+    case BAD_REQUEST = 400;
+
+    /**
      * Unauthorized code.
      */
     case UNAUTHORIZED = 401;
@@ -33,4 +38,3 @@ enum HttpCode: int {
     case INTERNAL_SERVER_ERROR = 500;
 }
 
-?>

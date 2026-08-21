@@ -13,6 +13,7 @@ return function(\FastRoute\RouteCollector $r) {
     $r->addRoute(HttpMethod::GET->value, '/index', HomeController::class . '@index');
     
     $r->addRoute(HttpMethod::GET->value, '/login', LoginController::class . '@index');
+    $r->addRoute(HttpMethod::POST->value, '/login', LoginController::class . '@login');
     $r->addRoute(HttpMethod::GET->value, '/register', RegisterController::class . '@index');
 
     $r->addRoute(HttpMethod::GET->value, '/not-found', ErrorController::class . '@notFound');

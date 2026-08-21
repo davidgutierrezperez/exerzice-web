@@ -1,15 +1,16 @@
 <?php
 
-namespace Api;
+namespace Api\Fetching;
 
-use Api\ApiFetcher;
-use Api\Fetcher;
+use Api\Fetching\ApiFetcher;
+use Infrastructure\Http\HttpFetchingRequest;
+use Infrastructure\Http\HttpMethod;
 use Infrastructure\Http\HttpResponse;
 
 /**
  * The class SpaceFetcher represents a specific API fetcher component for spaces.
  */
-final class SpaceFetcher extends Fetcher {
+final class SpaceFetcher extends ApiFetcher {
 
     /**
      * Bas URL to make requests about spaces to the API.
@@ -24,19 +25,6 @@ final class SpaceFetcher extends Fetcher {
     private static string $LOCATION_PARAMETER = 'location';
 
     /**
-     * API fetcher component.
-     * @var ApiFetcher
-     */
-    private readonly ApiFetcher $fetcher;
-
-    /**
-     * Default constructor of the class SpaceFetcher.
-     */
-    public function __construct(){
-        $this->fetcher = new ApiFetcher();
-    }
-
-    /**
      * Fetches spaces based on location.
      * @param string $location Location of the spaces.
      * @return HttpResponse HTTP response.
@@ -47,8 +35,9 @@ final class SpaceFetcher extends Fetcher {
         ];
 
         $query = $this->buildFetchQuery(self::$BASE_URL, $params);
-        return $this->fetcher->fetch($query);
+        $fetchingRequest = new HttpFetchingRequest(HttpMethod::GET, $query);
+
+        return $this->fetch($fetchingRequest);
     }
 }
 
-?>

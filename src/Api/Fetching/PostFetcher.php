@@ -1,15 +1,16 @@
 <?php 
 
-namespace Api;
+namespace Api\Fetching;
 
-use Api\ApiFetcher;
-use Api\Fetcher;
+use Api\Fetching\ApiFetcher;
+use Infrastructure\Http\HttpFetchingRequest;
+use Infrastructure\Http\HttpMethod;
 use Infrastructure\Http\HttpResponse;
 
 /**
  * The class PostFetcher represents an API fetcher for posts.
  */
-final class PostFetcher extends Fetcher {
+final class PostFetcher extends ApiFetcher {
 
     /**
      * Base URL for posts fetching queries.
@@ -24,19 +25,6 @@ final class PostFetcher extends Fetcher {
     private static string $CREATOR_PARAMETER = 'created_by';
 
     /**
-     * API fetcher component.
-     * @var ApiFetcher
-     */
-    private readonly ApiFetcher $fetcher;
-
-    /**
-     * Default constructor of the class PostFetcher.
-     */
-    public function __construct(){
-        $this->fetcher = new ApiFetcher();
-    }
-
-    /**
      * Fetches posts by their creator.
      * @param string $id ID of the user who created the posts.
      * @return HttpResponse HTTP response.
@@ -47,9 +35,9 @@ final class PostFetcher extends Fetcher {
         ];
 
         $query = $this->buildFetchQuery(self::$BASE_URL, $params);
-        error_log("LA QUERY ES: " . $query);
-        return $this->fetcher->fetch($query);
+        $fetchingRequest = new HttpFetchingRequest(HttpMethod::GET, $query);
+
+        return $this->fetch($fetchingRequest);
     }
 }
 
-?>

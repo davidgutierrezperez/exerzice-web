@@ -19,4 +19,3 @@ enum ErrorRouteType {
     case FORBIDDEN;
 }
 
-?>
