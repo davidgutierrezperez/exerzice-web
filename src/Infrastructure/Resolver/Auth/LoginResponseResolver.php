@@ -8,9 +8,17 @@ use Infrastructure\Resolver\ResponseResolver;
 use Override;
 use Ramsey\Uuid\Uuid;
 
+/**
+ * The class LoginResponseResolver represents a specific response resolver for HTTP logging responses.
+ */
 final class LoginResponseResolver implements ResponseResolver {
 
     #[Override]
+    /**
+     * Resolves a logging HTTP response.
+     * @param mixed $response HTTP response to resolve.
+     * @return ResolveResult Result of the resolving process.
+     */
     public function resolve(mixed $response): ResolveResult {
         $errors = $response['errors'] ?? [];
         $data = $response['data'] ?? [];
@@ -21,6 +29,11 @@ final class LoginResponseResolver implements ResponseResolver {
         return $this->resolveData($data);
     }
 
+    /**
+     * Resolves the errors of the response.
+     * @param array $errors Errors of the response.
+     * @return ResolveResult Result of the resolving process.
+     */
     private function resolveErrors(array $errors): ResolveResult {
         $normalizedErrors = [];
 
@@ -32,6 +45,11 @@ final class LoginResponseResolver implements ResponseResolver {
         return new ResolveResult(null, $normalizedErrors);
     }
 
+    /**
+     * Resolves the data of the response.
+     * @param array $data Response's data.
+     * @return ResolveResult Result of the resolving process.
+     */
     private function resolveData(array $data): ResolveResult {
         if (!$data)
             return new ResolveResult(null, [LoginResolverError::DATA_REQUIRED]);
