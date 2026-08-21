@@ -12,7 +12,13 @@ final class LoginResponseResolver implements ResponseResolver {
 
     #[Override]
     public function resolve(mixed $response): ResolveResult {
-        $data = $response['data'];
+        $errors = $response['errors'] ?? [];
+        $data = $response['data'] ?? [];
+
+        if($errors){
+            error_log("ERRROS: " . print_r($errors, true));
+            return new ResolveResult(null, [LoginResolverError::NO_REGISTERED_USER]);
+        }
 
         if (!$data)
             return new ResolveResult(null, [LoginResolverError::DATA_REQUIRED]);

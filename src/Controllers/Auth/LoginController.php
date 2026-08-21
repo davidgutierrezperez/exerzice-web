@@ -9,6 +9,7 @@ use Controllers\BaseController;
 use Infrastructure\Http\HttpCode;
 use Infrastructure\Http\HttpRequest;
 use Infrastructure\Http\RouteRedirector;
+use Infrastructure\Resolver\Auth\LoginResolverError;
 use Infrastructure\Resolver\Auth\LoginResponseResolver;
 use Ramsey\Uuid\Uuid;
 use Twig;
@@ -43,16 +44,19 @@ final class LoginController extends BaseController {
         $authToken = $httpRequest->input('credential');
 
         $response = $this->fetcher->fetchLogin($authToken);
-        $statusCode = $response->getCode();
-
-        if ($statusCode == HttpCode::BAD_REQUEST)
-            RouteRedirector::redirect('/login');
-
         $responseData = $response->getValue();
+
         $responseResolve = new LoginResponseResolver()->resolve($responseData);
 
-        if (!$responseResolve->isSuccess())
+        if (!$responseResolve->isSuccess()){
+            $errors = $responseResolve->getErrors();
+
+            if (in_array(LoginResolverError::NO_REGISTERED_USER, $errors, true))
+                RouteRedirector::redirect('/404');
+
             RouteRedirector::redirect('/login');
+        }
+            
 
         $userEntity = $responseResolve->value();
         UserSession::login($userEntity);
