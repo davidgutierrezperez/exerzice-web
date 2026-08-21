@@ -1,6 +1,9 @@
 <?php
 
 namespace Controllers;
+
+use Application\Security\Auth\UserSession;
+use Application\Security\Auth\UserSessionKey;
 use Twig;
 
 class BaseController {
@@ -17,6 +20,14 @@ class BaseController {
      */
     public function __construct(Twig\Environment $twig){
         $this->twig = $twig;
+
+        $userLoggedIn = UserSession::isLoggedIn();
+        $this->twig->addGlobal(name: 'isLoggedIn', value: $userLoggedIn);
+
+        if ($userLoggedIn){
+            $userEntity = UserSession::requireEntity();
+            $this->twig->addGlobal(name: UserSessionKey::NAME->value, value: $userEntity->getName());
+        }
     }
 }
 

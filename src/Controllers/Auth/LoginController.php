@@ -3,10 +3,13 @@
 namespace Controllers\Auth;
 
 use Api\Fetching\LoginFetcher;
+use Application\Security\Auth\UserEntity;
+use Application\Security\Auth\UserSession;
 use Controllers\BaseController;
 use Infrastructure\Http\HttpCode;
 use Infrastructure\Http\HttpRequest;
 use Infrastructure\Http\RouteRedirector;
+use Ramsey\Uuid\Uuid;
 use Twig;
 
 /**
@@ -41,14 +44,22 @@ final class LoginController extends BaseController {
         $response = $this->fetcher->fetchLogin($authToken);
         $statusCode = $response->getCode();
 
-        if ($statusCode == HttpCode::BAD_REQUEST){
-            RouteRedirector::redirect('/404');
-            exit;
-        }
-        else {
-            RouteRedirector::redirect('/');
-            exit;
-        }
+        if ($statusCode == HttpCode::BAD_REQUEST)
+            RouteRedirector::redirect('/login');
+
+        $responseData = $response->getValue();
+        $userData = $responseData['data'];
+
+        if (!$userData)
+            RouteRedirector::redirect('/login');
+
+        $userId = $userData['id'];
+        $userName = $userData['full_name'];
+
+        $userEntity = new UserEntity(Uuid::fromString($userId), $userName);
+        UserSession::login($userEntity);
+
+        RouteRedirector::redirect('/');
     }  
 }
 
