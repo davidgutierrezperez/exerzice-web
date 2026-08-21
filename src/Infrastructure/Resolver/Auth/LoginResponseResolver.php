@@ -15,15 +15,26 @@ final class LoginResponseResolver implements ResponseResolver {
         $errors = $response['errors'] ?? [];
         $data = $response['data'] ?? [];
 
-        if($errors){
-            error_log("ERRROS: " . print_r($errors, true));
-            return new ResolveResult(null, [LoginResolverError::NO_REGISTERED_USER]);
+        if($errors)
+            return $this->resolveErrors($errors);
+
+        return $this->resolveData($data);
+    }
+
+    private function resolveErrors(array $errors): ResolveResult {
+        $normalizedErrors = [];
+
+        foreach (LoginResolverError::cases() as $error) {
+            if (in_array($error->value, $errors, true)) 
+                $normalizedErrors[] = $error;
         }
 
+        return new ResolveResult(null, $normalizedErrors);
+    }
+
+    private function resolveData(array $data): ResolveResult {
         if (!$data)
             return new ResolveResult(null, [LoginResolverError::DATA_REQUIRED]);
-
-        error_log("DATA: " . print_r($data, true));
 
         $userId = $data['id'] ?? null;
         $userName = $data['full_name'] ?? null;
@@ -39,7 +50,6 @@ final class LoginResponseResolver implements ResponseResolver {
         if (!$userName)
             $errors[] = LoginResolverError::USER_NAME_REQUIRED;
 
-
         if (!empty($errors))
             new ResolveResult(null, $errors);
 
@@ -47,5 +57,5 @@ final class LoginResponseResolver implements ResponseResolver {
         $userEntity = new UserEntity($normalizedUserId, $userName);
 
         return new ResolveResult($userEntity, []);
-    }
+    } 
 }

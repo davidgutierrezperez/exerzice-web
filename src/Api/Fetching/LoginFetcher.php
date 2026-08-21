@@ -6,6 +6,9 @@ use Infrastructure\Http\HttpFetchingRequest;
 use Infrastructure\Http\HttpMethod;
 use Infrastructure\Http\HttpResponse;
 
+/**
+ * The class LoginFetcher
+ */
 final class LoginFetcher extends ApiFetcher {
     private static string $BASE_URL = '/login';
 

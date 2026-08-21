@@ -62,8 +62,11 @@ final class LoginController extends BaseController {
         $errors = $result->getErrors();
         if (!$errors) return;
 
-        if (in_array(LoginResolverError::NO_REGISTERED_USER, $errors, true))
+        if (in_array(LoginResolverError::USER_NO_REGISTERED, $errors, true))
             RouteRedirector::redirect('/404');
+
+        if (in_array(LoginResolverError::USER_ALREADY_LOGGED_IN, $errors, true))
+            RouteRedirector::redirect('/');
 
         RouteRedirector::redirect('/login');
     }

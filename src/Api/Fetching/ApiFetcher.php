@@ -26,7 +26,7 @@ class ApiFetcher {
         $query = $request->getQuery();
         $params = $request->getParams();
 
-        $options = $this->buildOptions($method, $params);
+        $options = $this->buildFetchOptions($method, $params);
         $response = fetch($query, $options);
 
         $statusCode = $response->status();
@@ -49,7 +49,13 @@ class ApiFetcher {
         return ApiUrl::url() . $baseUrl . '?' . $queryParams;
     }
 
-    private function buildOptions(HttpMethod $method, array $params): array {
+    /**
+     * Buils the options to fetch a query to the API.
+     * @param HttpMethod $method HTTP method of the query. 
+     * @param array $params Parameters of the query.
+     * @return array[]|array{json: array, method: string}
+     */
+    private function buildFetchOptions(HttpMethod $method, array $params): array {
         $options = [
             'method' => $method->value,
             'json' => $params
