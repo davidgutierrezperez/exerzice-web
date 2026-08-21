@@ -9,6 +9,7 @@ use Controllers\BaseController;
 use Infrastructure\Http\HttpCode;
 use Infrastructure\Http\HttpRequest;
 use Infrastructure\Http\RouteRedirector;
+use Infrastructure\Resolver\Auth\LoginResponseResolver;
 use Ramsey\Uuid\Uuid;
 use Twig;
 
@@ -48,15 +49,12 @@ final class LoginController extends BaseController {
             RouteRedirector::redirect('/login');
 
         $responseData = $response->getValue();
-        $userData = $responseData['data'];
+        $responseResolve = new LoginResponseResolver()->resolve($responseData);
 
-        if (!$userData)
+        if (!$responseResolve->isSuccess())
             RouteRedirector::redirect('/login');
 
-        $userId = $userData['id'];
-        $userName = $userData['full_name'];
-
-        $userEntity = new UserEntity(Uuid::fromString($userId), $userName);
+        $userEntity = $responseResolve->value();
         UserSession::login($userEntity);
 
         RouteRedirector::redirect('/');
