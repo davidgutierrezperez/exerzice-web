@@ -10,14 +10,28 @@ use Infrastructure\Resolver\Auth\LoginResolverError;
 use Infrastructure\Resolver\Auth\LoginResponseResolver;
 use Infrastructure\Resolver\ResolveResult;
 
+/**
+ * The class LoginViewController represents a controller component that handles the login of users.
+ */
 final class LoginController {
 
+    /**
+     * API fetcher component for logging users. 
+     * @var LoginFetcher
+     */
     private readonly LoginFetcher $fetcher;
 
+    /**
+     * Default constructor of the class LoginController.
+     */
     public function __construct(){
         $this->fetcher = new LoginFetcher();
     }
 
+    /**
+     * Handles the logging of a user.
+     * @return void
+     */
     public function login(): void {
         $httpRequest = new HttpRequest();
         $authToken = $httpRequest->input('credential');
@@ -25,6 +39,11 @@ final class LoginController {
         $this->loginWithCredential($authToken);
     }
 
+    /**
+     * Handles the login of a user with a certain authentication token.
+     * @param string $authToken User's authentication token.
+     * @return void
+     */
     public function loginWithCredential(string $authToken): void {
         $response = $this->fetcher->login($authToken);
         $responseResolve = new LoginResponseResolver()->resolve($response);
