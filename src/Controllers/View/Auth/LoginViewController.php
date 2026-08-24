@@ -6,12 +6,12 @@ use Controllers\View\BaseViewController;
 use Twig;
 
 /**
- * The class LoginController represents a controller component that handles the login of users.
+ * The class LoginViewController represents a controller component that handles the login VIEW of users.
  */
 final class LoginViewController extends BaseViewController {
 
     /**
-     * Default constructor of the class LoginController.
+     * Default constructor of the class LoginViewController.
      * @param Twig\Environment $twig Twig environment.
      */
     public function __construct(Twig\Environment $twig) {

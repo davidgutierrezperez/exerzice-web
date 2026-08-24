@@ -10,6 +10,7 @@ use Controllers\View\Auth\RegisterViewController;
 use Controllers\View\HomeViewController;
 use Domain\Route;
 use Infrastructure\Http\HttpMethod;
+
 /**
  * Returns and configures all the routes of the application.
  */

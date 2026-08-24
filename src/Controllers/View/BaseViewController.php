@@ -6,7 +6,11 @@ use Application\Security\Auth\UserSession;
 use Application\Security\Auth\UserSessionKey;
 use Twig;
 
+/**
+ * Base rendering view controller component.
+ */
 class BaseViewController {
+    
     /**
      * Twig environment to load Twig files.
      * @var Twig\Environment 
