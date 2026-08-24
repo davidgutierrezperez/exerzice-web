@@ -2,10 +2,10 @@
 
 namespace Controllers;
 
-use Controllers\BaseController;
+use Controllers\View\BaseViewController;
 use Infrastructure\Http\ErrorRouteType;
 
-class ErrorController extends BaseController {
+class ErrorController extends BaseViewController {
 
     /**
      * Handles the errors encountered while navigation through the app.
@@ -16,17 +16,18 @@ class ErrorController extends BaseController {
         switch ($error){
             // Page not found.
             case ErrorRouteType::NOT_FOUND:
-                ErrorController::notFound();
+                $this->notFound();
                 break;
 
             // Page not accesible by the user.
             case ErrorRouteType::FORBIDDEN:
-                ErrorController::forbidden();
+                $this->forbidden();
                 break;
-
+            case ErrorRouteType::UNKNOWN:
+                $this->uups();
             // Default error.
             default:
-                ErrorController::notFound();
+                $this->notFound();
                 break;
         }
     }
@@ -45,6 +46,10 @@ class ErrorController extends BaseController {
      */
     public function forbidden(): void {
         echo $this->twig->render('errors/forbidden.twig');
+    }
+
+    public function uups(): void {
+        echo $this->twig->render('errors/uups.twig');
     }
 }
 

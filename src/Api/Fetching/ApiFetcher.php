@@ -5,6 +5,7 @@ namespace Api\Fetching;
 use Api\ApiUrl;
 use Application\Security\AuthenticationException;
 use Application\Security\AuthorizationException;
+use Application\Security\BadRequestException;
 use Infrastructure\Http\HttpResponse;
 use Infrastructure\Http\HttpCode;
 use Infrastructure\Http\HttpFetchingRequest;
@@ -83,6 +84,8 @@ class ApiFetcher {
                 throw new AuthorizationException();
             case HttpCode::FORBIDDEN->value: 
                 throw new AuthenticationException();
+            case HttpCode::BAD_REQUEST->value:
+                throw new BadRequestException();
             default:
                 break;
         }

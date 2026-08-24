@@ -8,6 +8,7 @@ require_once BASE_PATH . '/init.php';
 use Application\Security\AlreadyAuthenticatedException;
 use Application\Security\AuthenticationException;
 use Application\Security\AuthorizationException;
+use Application\Security\BadRequestException;
 use Application\Security\EmptyRequestException;
 use Controllers\ErrorController;
 use Infrastructure\Http\RouteRedirector;
@@ -73,7 +74,7 @@ switch ($routerState) {
             RouteRedirector::redirect('/forbidden');
         } catch (AlreadyAuthenticatedException){
             RouteRedirector::redirect('/');
-        } catch (EmptyRequestException){
+        } catch (EmptyRequestException|BadRequestException){
             RouteRedirector::redirect('/uups');
         }
 
