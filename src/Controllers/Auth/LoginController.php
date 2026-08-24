@@ -11,6 +11,7 @@ use Infrastructure\Http\HttpRequest;
 use Infrastructure\Http\RouteRedirector;
 use Infrastructure\Resolver\Auth\LoginResolverError;
 use Infrastructure\Resolver\Auth\LoginResponseResolver;
+use Infrastructure\Resolver\Auth\LogoutResponseResolver;
 use Infrastructure\Resolver\ResolveResult;
 use Ramsey\Uuid\Uuid;
 use Twig;
@@ -48,10 +49,8 @@ final class LoginController extends BaseController {
         $httpRequest = new HttpRequest();
         $authToken = $httpRequest->input('credential');
 
-        $response = $this->fetcher->fetchLogin($authToken);
-        $responseData = $response->getValue();
-
-        $responseResolve = new LoginResponseResolver()->resolve($responseData);
+        $response = $this->fetcher->login($authToken);
+        $responseResolve = new LoginResponseResolver()->resolve($response);
 
         if (!$responseResolve->isSuccess())
             $this->handleUnsuccessfulLogin($responseResolve);
@@ -61,6 +60,17 @@ final class LoginController extends BaseController {
 
         RouteRedirector::redirect('/');
     }  
+
+    /**
+     * Logs out the user.
+     * @return void
+     */
+    public function logout(): void {
+        $this->fetcher->logout();
+        UserSession::logout();
+
+        RouteRedirector::redirect('/');
+    }
 
     /**
      * Handles an unsuccessful logging process.
