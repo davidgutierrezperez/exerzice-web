@@ -6,7 +6,7 @@ use Infrastructure\Http\HttpResponse;
 use Infrastructure\Resolver\ResolveResult;
 
 /**
- * The interface ResponseResolver represents a generic resolver for HTTP responses.
+ * The class ResponseResolver represents a generic resolver for HTTP responses.
  */
 abstract class ResponseResolver {
 

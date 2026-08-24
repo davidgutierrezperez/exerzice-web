@@ -10,14 +10,28 @@ use Infrastructure\Resolver\Auth\RegisterResolverError;
 use Infrastructure\Resolver\Auth\RegisterResponseResolver;
 use Infrastructure\Resolver\ResolveResult;
 
+/**
+ * The class RegisterController represents a action controller for registering new users.
+ */
 final class RegisterController {
 
+    /**
+     * API fetcher component for registering users.
+     * @var RegisterFetcher
+     */
     private readonly RegisterFetcher $fetcher;
 
+    /**
+     * Default constructor of the class RegisterController.
+     */
     public function __construct(){
         $this->fetcher = new RegisterFetcher();
     }
 
+    /**
+     * Registers a new user.
+     * @return void
+     */
     public function register(): void {
         $httpRequest = new HttpRequest();
         $registerRequest = new RegisterRequestMapper()->map($httpRequest);
@@ -32,6 +46,11 @@ final class RegisterController {
         new LoginController()->loginWithCredential($authToken);
     }
 
+    /**
+     * Handles a unsuccesful registering process.
+     * @param ResolveResult $registerResult Result of the response resolving process.
+     * @return void
+     */
     private function handleUnsuccesfulRegister(ResolveResult $registerResult): void {
         $errors = $registerResult->getErrors();
         if (!$errors) return;
