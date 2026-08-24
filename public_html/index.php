@@ -5,9 +5,12 @@ define('BASE_PATH', dirname(__DIR__));
 require_once BASE_PATH . '/vendor/autoload.php';
 require_once BASE_PATH . '/init.php';
 
+use Application\Security\AlreadyAuthenticatedException;
 use Application\Security\AuthenticationException;
 use Application\Security\AuthorizationException;
+use Application\Security\EmptyRequestException;
 use Controllers\ErrorController;
+use Infrastructure\Http\RouteRedirector;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -51,21 +54,27 @@ switch ($routerState) {
         break;
     case FastRoute\Dispatcher::FOUND:
         try {
-            $handler = $routeInfo[1]; 
-            $vars = $routeInfo[2];   
+            $route = $routeInfo[1];
+            $vars = $routeInfo[2];
 
-            // Getting the controller and method to call
-            [$controllerName, $method] = explode('@', $handler);
+            // Execute middlewares
+            foreach ($route->getMiddlewares() as $middlewareClass) {
+                (new $middlewareClass())->execute();
+            }
 
             // Controller instancing
-            $controller = new $controllerName($twig);
+            $controller = new ($route->getHandler())($twig);
 
             // Calling the method to execute
-            $controller->$method(...array_values($vars));
+            $response = $controller->{$route->getHandlerMethod()}(...array_values($vars));
         } catch (AuthenticationException){
-            header('Location: /login');
+            RouteRedirector::redirect('/login');
         } catch (AuthorizationException){
-            header('Location: /forbidden');
+            RouteRedirector::redirect('/forbidden');
+        } catch (AlreadyAuthenticatedException){
+            RouteRedirector::redirect('/');
+        } catch (EmptyRequestException){
+            RouteRedirector::redirect('/uups');
         }
 
         break;
