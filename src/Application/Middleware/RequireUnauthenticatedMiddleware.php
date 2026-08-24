@@ -7,14 +7,14 @@ use Application\Security\Auth\UserSession;
 use Override;
 
 /**
- * The class AuthenticationMiddleware represents a specific middleware component that checks if
- * the user is already logged in.
+ * The class RequireUnauthenticatedMiddleware represents a specific middleware component that checks if
+ * the user is not logged in.
  */
 final class RequireUnauthenticatedMiddleware implements Middleware {
 
     #[Override]
     /**
-     * Checks if the user is already logged in.
+     * Checks if the user is not logged in.
      * @throws AlreadyAuthenticatedException
      * @return void
      */

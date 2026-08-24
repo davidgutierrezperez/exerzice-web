@@ -16,6 +16,11 @@ final class LoginFetcher extends ApiFetcher {
      * @var string
      */
     private static string $LOGIN_URL = '/login';
+
+    /**
+     * Base URL for logging out fetching.
+     * @var string
+     */
     private static string $LOGOUT_URL = '/logout';
 
     /**
@@ -34,6 +39,10 @@ final class LoginFetcher extends ApiFetcher {
         return $this->fetch($fetchingRequest);
     }
 
+    /**
+     * Fetches a logging out request.
+     * @return HttpResponse HTTP response.
+     */
     public function logout(): HttpResponse {
         $query = $this->buildFetchQuery(self::$LOGOUT_URL);
         $fetchingRequest = new HttpFetchingRequest(HttpMethod::POST, $query, []);

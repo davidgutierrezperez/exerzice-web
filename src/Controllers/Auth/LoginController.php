@@ -61,12 +61,13 @@ final class LoginController extends BaseController {
         RouteRedirector::redirect('/');
     }  
 
+    /**
+     * Logs out the user.
+     * @return void
+     */
     public function logout(): void {
-        error_log("HE LLEGADO AQUÍ");
         $this->fetcher->logout();
         UserSession::logout();
-
-        error_log("HE PASADO EL FETCH");
 
         RouteRedirector::redirect('/');
     }
