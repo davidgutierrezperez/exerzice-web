@@ -2,6 +2,7 @@
 
 namespace Infrastructure\Resolver;
 
+use Infrastructure\Http\HttpResponse;
 use Infrastructure\Resolver\ResolveResult;
 
 /**
@@ -14,5 +15,5 @@ interface ResponseResolver {
      * @param mixed $response HTTP response to resolve.
      * @return ResolveResult Result of the resolving process.
      */
-    function resolve(mixed $response): ResolveResult;
+    function resolve(HttpResponse $response): ResolveResult;
 }

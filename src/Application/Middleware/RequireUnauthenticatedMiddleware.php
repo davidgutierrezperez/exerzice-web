@@ -10,7 +10,7 @@ use Override;
  * The class AuthenticationMiddleware represents a specific middleware component that checks if
  * the user is already logged in.
  */
-final class AuthenticationMiddleware implements Middleware {
+final class RequireUnauthenticatedMiddleware implements Middleware {
 
     #[Override]
     /**

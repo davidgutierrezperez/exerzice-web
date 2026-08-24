@@ -3,6 +3,7 @@
 namespace Infrastructure\Resolver\Auth;
 
 use Application\Security\Auth\UserEntity;
+use Infrastructure\Http\HttpResponse;
 use Infrastructure\Resolver\ResolveResult;
 use Infrastructure\Resolver\ResponseResolver;
 use Override;
@@ -19,9 +20,10 @@ final class LoginResponseResolver implements ResponseResolver {
      * @param mixed $response HTTP response to resolve.
      * @return ResolveResult Result of the resolving process.
      */
-    public function resolve(mixed $response): ResolveResult {
-        $errors = $response['errors'] ?? [];
-        $data = $response['data'] ?? [];
+    public function resolve(HttpResponse $response): ResolveResult {
+        $responseData = $response->getValue();
+        $errors = $responseData['errors'] ?? [];
+        $data = $responseData['data'] ?? [];
 
         if($errors)
             return $this->resolveErrors($errors);
