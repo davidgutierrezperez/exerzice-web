@@ -1,12 +1,12 @@
 <?php
 
-namespace Controllers;
+namespace Controllers\View;
 
 use Application\Security\Auth\UserSession;
 use Application\Security\Auth\UserSessionKey;
 use Twig;
 
-class BaseController {
+class BaseViewController {
     /**
      * Twig environment to load Twig files.
      * @var Twig\Environment 

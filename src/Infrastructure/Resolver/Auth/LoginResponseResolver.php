@@ -12,7 +12,7 @@ use Ramsey\Uuid\Uuid;
 /**
  * The class LoginResponseResolver represents a specific response resolver for HTTP logging responses.
  */
-final class LoginResponseResolver implements ResponseResolver {
+final class LoginResponseResolver extends ResponseResolver {
 
     #[Override]
     /**
@@ -26,25 +26,9 @@ final class LoginResponseResolver implements ResponseResolver {
         $data = $responseData['data'] ?? [];
 
         if($errors)
-            return $this->resolveErrors($errors);
+            return $this->resolveErrors(LoginResolverError::class, $errors);
 
         return $this->resolveData($data);
-    }
-
-    /**
-     * Resolves the errors of the response.
-     * @param array $errors Errors of the response.
-     * @return ResolveResult Result of the resolving process.
-     */
-    private function resolveErrors(array $errors): ResolveResult {
-        $normalizedErrors = [];
-
-        foreach (LoginResolverError::cases() as $error) {
-            if (in_array($error->value, $errors, true)) 
-                $normalizedErrors[] = $error;
-        }
-
-        return new ResolveResult(null, $normalizedErrors);
     }
 
     /**

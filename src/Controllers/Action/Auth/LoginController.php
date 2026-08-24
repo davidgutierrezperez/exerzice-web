@@ -1,54 +1,31 @@
-<?php
+<?php 
 
-namespace Controllers\Auth;
+namespace Controllers\Action\Auth;
 
 use Api\Fetching\LoginFetcher;
-use Application\Security\Auth\UserEntity;
 use Application\Security\Auth\UserSession;
-use Controllers\BaseController;
-use Infrastructure\Http\HttpCode;
 use Infrastructure\Http\HttpRequest;
 use Infrastructure\Http\RouteRedirector;
 use Infrastructure\Resolver\Auth\LoginResolverError;
 use Infrastructure\Resolver\Auth\LoginResponseResolver;
-use Infrastructure\Resolver\Auth\LogoutResponseResolver;
 use Infrastructure\Resolver\ResolveResult;
-use Ramsey\Uuid\Uuid;
-use Twig;
 
-/**
- * The class LoginController represents a controller component that handles the login of users.
- */
-final class LoginController extends BaseController {
+final class LoginController {
 
     private readonly LoginFetcher $fetcher;
 
-    /**
-     * Default constructor of the class LoginController.
-     * @param Twig\Environment $twig Twig environment.
-     */
-    public function __construct(Twig\Environment $twig) {
-        parent::__construct($twig);
-
+    public function __construct(){
         $this->fetcher = new LoginFetcher();
     }
 
-    /**
-     * Renders the login page.
-     * @return void
-     */
-    public function index(): void {
-        echo $this->twig->render('pages/auth/login.twig');
-    }
-
-    /**
-     * Handles the logging of a registered user.
-     * @return void
-     */
     public function login(): void {
         $httpRequest = new HttpRequest();
         $authToken = $httpRequest->input('credential');
 
+        $this->loginWithCredential($authToken);
+    }
+
+    public function loginWithCredential(string $authToken): void {
         $response = $this->fetcher->login($authToken);
         $responseResolve = new LoginResponseResolver()->resolve($response);
 
@@ -59,7 +36,7 @@ final class LoginController extends BaseController {
         UserSession::login($userEntity);
 
         RouteRedirector::redirect('/');
-    }  
+    }
 
     /**
      * Logs out the user.
@@ -90,4 +67,3 @@ final class LoginController extends BaseController {
         RouteRedirector::redirect('/login');
     }
 }
-

@@ -1,14 +1,14 @@
 <?php
 
-namespace Controllers\Auth;
+namespace Controllers\View\Auth;
 
-use Controllers\BaseController;
+use Controllers\View\BaseViewController;
 use Twig;
 
 /**
  * The class RegisterController represents a controller component that handles the register of users.
  */
-final class RegisterController extends BaseController {
+final class RegisterViewController extends BaseViewController {
 
     /**
      * Default constructor of the class RegisterController.

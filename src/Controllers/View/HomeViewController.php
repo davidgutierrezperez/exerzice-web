@@ -1,15 +1,15 @@
 <?php
 
-namespace Controllers;
+namespace Controllers\View;
 
 use Twig;
 use Api\Fetching\PostFetcher;
 use Api\Fetching\SpaceFetcher;
 
 /**
- * The class HomeController represents the controller component that handles the home page.
+ * The class HomeViewController represents the controller component that handles the home page.
  */
-class HomeController extends BaseController {
+class HomeViewController extends BaseViewController {
 
     /**
      * Posts fetcher component.
@@ -24,7 +24,7 @@ class HomeController extends BaseController {
     private readonly SpaceFetcher $spaceFetcher;
 
     /**
-     * Default constructor of the class HomeController.
+     * Default constructor of the class HomeViewController.
      * @param Twig\Environment $twig Twig environment.
      */
     public function __construct(Twig\Environment $twig){

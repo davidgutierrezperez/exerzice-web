@@ -17,5 +17,10 @@ enum ErrorRouteType {
      * Forbidden route error.
      */
     case FORBIDDEN;
+
+    /**
+     * Unknown route error.
+     */
+    case UNKNOWN;
 }
 
