@@ -1,0 +1,75 @@
+{% extends 'base-headered-aside.twig' %}
+
+{% block styles %}
+	{{ parent() }}
+    <link rel='stylesheet' href='/css/pages/media.css'>
+{% endblock %}
+
+{% block center_content %}
+
+<div class='flex-column bigger-gap'>
+    <section class='flex-column bigger-gap'>
+        <div class='profile-main-info flex-row align-items big-gap'>
+            <img src='/images/examples/other_user_photo.jpg' class='image-logo media-picture'>
+
+            <div class='flex-column justify-evently medium-gap'>
+                <h2>{{media.full_name}}</h2>
+                <p class='text-secondary'>Ejemplo de texto</p>
+            </div>
+        </div>
+
+        <div class='profile-additional-info'>
+            <ul class='flex-row text-secondary justify-between'>
+                <li class='flex-row align-items small-gap'>
+                    <svg class='small-icon' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin-icon lucide-map-pin"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                    {{media.location}}
+                </li>
+                <li class='flex-row align-items small-gap'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-icon lucide-calendar"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+                    {{media.registered_at}}
+                </li>
+                <li class='flex-row align-items small-gap'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                     {% if followers %}
+                        {{ media.followers }}
+                    {% else %}
+                        0
+                    {% endif %}
+
+                    followers
+                </li>
+                <li class='flex-row align-items small-gap'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                    {% if following %}
+                        {{ media.following }}
+                    {% else %}
+                        0
+                    {% endif %}
+
+                    following
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class='flex-column bigger-gap'>
+        <form class='media-section-selector primary-color bold medium-text'>
+            <div class='flex-column medium-gap fit-content'>
+                <button class='bold medium-text primary-color pointer' type='submit'>Recent activity</button>
+                <span class='big-line'></span>
+            </div>
+        </form>
+
+        <div class='info-selected-div'>
+            {% if posts %}
+                {% for post in posts %}
+                    {% include 'components/posts/post.twig' with {post: post} %}
+                {% endfor %}
+            {% else %}
+                <p class='text-secondary'>No posts were found</p>
+            {% endif %}
+        </div>
+    </section>
+</div>
+
+{% endblock %}
