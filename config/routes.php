@@ -4,6 +4,7 @@ use Application\Middleware\RequireAuthenticatedMiddleware;
 use Application\Middleware\RequireUnauthenticatedMiddleware;
 use Controllers\Action\Auth\LoginController;
 use Controllers\Action\Auth\RegisterController;
+use Controllers\Action\PostController;
 use Controllers\ErrorController;
 use Controllers\View\Auth\LoginViewController;
 use Controllers\View\Auth\RegisterViewController;
@@ -30,6 +31,7 @@ return function(\FastRoute\RouteCollector $r) {
     $r->addRoute(HttpMethod::GET->value, '/me', new Route(ProfileViewController::class, 'me', [RequireAuthenticatedMiddleware::class]));
 
     $r->addRoute(HttpMethod::GET->value, '/create-post', new Route(PostViewController::class, 'create', [RequireAuthenticatedMiddleware::class]));
+    $r->addRoute(HttpMethod::POST->value, '/post', new Route(PostController::class, 'create', [RequireAuthenticatedMiddleware::class]));
 
     $r->addRoute(HttpMethod::GET->value, '/not-found', new Route(ErrorController::class, 'notFound'));
     $r->addRoute(HttpMethod::GET->value, '/forbidden', new Route(ErrorController::class, 'forbidden'));

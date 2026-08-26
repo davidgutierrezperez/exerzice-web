@@ -3,6 +3,7 @@
 namespace Api\Fetching;
 
 use Api\Fetching\ApiFetcher;
+use Application\Persistence\CreatePostRequest;
 use Infrastructure\Http\HttpFetchingRequest;
 use Infrastructure\Http\HttpMethod;
 use Infrastructure\Http\HttpResponse;
@@ -37,6 +38,16 @@ final class PostFetcher extends ApiFetcher {
         $query = $this->buildFetchQuery(self::$BASE_URL, $params);
         $fetchingRequest = new HttpFetchingRequest(HttpMethod::GET, $query);
 
+        return $this->fetch($fetchingRequest);
+    }
+
+    public function create(CreatePostRequest $request): HttpResponse {
+        $params = [
+            'content' => $request->getContent()
+        ];
+
+        $query = $this->buildFetchQuery(self::$BASE_URL);
+        $fetchingRequest = new HttpFetchingRequest(HttpMethod::POST, $query, $params);
         return $this->fetch($fetchingRequest);
     }
 }
