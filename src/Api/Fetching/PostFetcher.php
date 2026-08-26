@@ -41,6 +41,11 @@ final class PostFetcher extends ApiFetcher {
         return $this->fetch($fetchingRequest);
     }
 
+    /**
+     * Fetches the creation of a new post.
+     * @param CreatePostRequest $request Request to create a new post.
+     * @return HttpResponse HTTP response.
+     */
     public function create(CreatePostRequest $request): HttpResponse {
         $params = [
             'content' => $request->getContent()

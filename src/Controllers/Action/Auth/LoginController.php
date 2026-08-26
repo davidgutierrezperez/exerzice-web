@@ -78,7 +78,7 @@ final class LoginController {
         if (!$errors) return;
 
         if (in_array(LoginResolverError::USER_NO_REGISTERED, $errors, true))
-            RouteRedirector::redirect('/404');
+            RouteRedirector::redirect('/register');
 
         if (in_array(LoginResolverError::USER_ALREADY_LOGGED_IN, $errors, true))
             RouteRedirector::redirect('/');
