@@ -7,7 +7,7 @@
 
 {% block center_content %}
 	<div class='create-post-page flex-column bigger-gap'>
-		<form method='POST' action='/post' class='bigger-gap flex-column'>
+		<form method='post' action='/post' class='bigger-gap flex-column'>
 			<div class='flex-row justify-between align-items'>
 				<div class='flex-column small-gap'>
 					<h2>Create a post</h2>
@@ -23,7 +23,7 @@
             }
         } %}
 
-			<textarea class='input-text big-input-text border-focusable bold medium-text' placeholder='Share something...'></textarea>
+			<textarea class='input-text big-input-text border-focusable bold medium-text' placeholder='Share something...' name='content' required></textarea>
 		</form>
 
 		<div class='flex-row bigger-gap align-items'>
