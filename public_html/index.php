@@ -10,6 +10,7 @@ use Application\Security\AuthenticationException;
 use Application\Security\AuthorizationException;
 use Application\Security\BadRequestException;
 use Application\Security\EmptyRequestException;
+use Application\Security\NotFoundException;
 use Controllers\ErrorController;
 use Infrastructure\Http\RouteRedirector;
 
@@ -76,6 +77,8 @@ switch ($routerState) {
             RouteRedirector::redirect('/');
         } catch (EmptyRequestException|BadRequestException){
             RouteRedirector::redirect('/uups');
+        } catch (NotFoundException){
+            RouteRedirector::redirect('/not-found');
         }
 
         break;
