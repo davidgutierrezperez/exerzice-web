@@ -8,6 +8,7 @@ use Controllers\ErrorController;
 use Controllers\View\Auth\LoginViewController;
 use Controllers\View\Auth\RegisterViewController;
 use Controllers\View\HomeViewController;
+use Controllers\View\PostViewController;
 use Controllers\View\ProfileViewController;
 use Domain\Route;
 use Infrastructure\Http\HttpMethod;
@@ -27,6 +28,8 @@ return function(\FastRoute\RouteCollector $r) {
 
     $r->addRoute(HttpMethod::GET->value, '/user/{id:[0-9a-fA-F-]{36}}', new Route(ProfileViewController::class, 'profile'));
     $r->addRoute(HttpMethod::GET->value, '/me', new Route(ProfileViewController::class, 'me', [RequireAuthenticatedMiddleware::class]));
+
+    $r->addRoute(HttpMethod::GET->value, '/create-post', new Route(PostViewController::class, 'create', [RequireAuthenticatedMiddleware::class]));
 
     $r->addRoute(HttpMethod::GET->value, '/not-found', new Route(ErrorController::class, 'notFound'));
     $r->addRoute(HttpMethod::GET->value, '/forbidden', new Route(ErrorController::class, 'forbidden'));

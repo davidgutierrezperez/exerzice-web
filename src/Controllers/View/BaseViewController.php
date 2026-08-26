@@ -30,7 +30,9 @@ class BaseViewController {
 
         if ($userLoggedIn){
             $userEntity = UserSession::requireEntity();
+
             $this->twig->addGlobal(name: UserSessionKey::NAME->value, value: $userEntity->getName());
+            $this->twig->addGlobal(name: UserSessionKey::ID->value, value: $userEntity->getId());
         }
     }
 }
