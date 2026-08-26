@@ -20,6 +20,8 @@
     --layout-columns: 320px 2fr 320px;
     --layout-gap: 32px;
     --layout-width: 1400px;
+
+    --font: "Inter", sans-serif;
 }
 
 body {
@@ -131,6 +133,10 @@ input {
     font-size: 16px;
 }
 
+.small-text {
+    font-size: 14px;
+}
+
 .small-image-logo {
     width: 48px;
     height: 48px;
@@ -157,6 +163,10 @@ input {
 
 .small-gap {
     gap: 10px;
+}
+
+.slim-gap {
+    gap: 4px;
 }
 
 .tiny-gap {
@@ -242,4 +252,51 @@ a, button {
 
 .pointer:hover {
     cursor: pointer;
+}
+
+.default-button {
+    background-color: var(--primary);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.default-button:hover {
+    cursor: pointer;
+}
+
+.input-text {
+    width: 100%;
+}
+
+.input-text {
+    border: solid 1px transparent;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.border-focusable {
+    border-color: transparent;
+    outline: none;
+    
+    transition: 0.3s ease-in-out;
+}
+
+.border-focusable:focus-within, .border-focusable:hover {
+    border-color: var(--primary-soft);
+    outline: none;
+}
+
+.big-text {
+    font-size: 16px;
+}
+
+.big-input-text {
+    height: 150px;
+}
+
+textarea {
+    font-family: var(--font);
 }
