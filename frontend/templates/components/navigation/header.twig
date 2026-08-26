@@ -8,7 +8,14 @@
 
     <div class='flex-row align-horizontaly justify-between medium-gap'>
         {% if isLoggedIn %}
-            <p>{{ userName }}</p>
+            {% include 'components/user/small-user-info.twig' 
+                with {
+                    user: {
+                        name: userName,
+                        id: userId
+                    }
+                }
+            %}
         {% else %}
             <a href='/login' class='big-button no-background-button'>Sign in</a>
             <a href='/register' class='big-button background-button'>Register</a>
