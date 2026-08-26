@@ -15,7 +15,11 @@
 
             <!-- NAME AND VERIFICATION STATUS-->
 			<div class='post-user-name-info flex-row'>
-				<h2 class='post-user-name'>{{ post.created_by.name }}</h2>
+				<h2 class='post-user-name text-primary'>
+                    <a href='/user/{{ post.created_by.id }}' class='text-primary'>
+                        {{ post.created_by.name }}
+                    </a>
+                </h2>
 
 				{% if post.created_by.verified %}
 					<svg class='user-verified-icon' xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check-icon lucide-badge-check"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
@@ -23,11 +27,11 @@
 			</div>
 
             <!-- SPORT OF THE POST -->
-			<p class='text-secundary'>Sport</p>
+			<p class='text-secondary'>Sport</p>
 		</div>
 
         <!-- CREATION DATE OF THE POST -->
-		<p class='text-secundary'>{{ post.created_at}}</p>
+		<p class='text-secondary'>{{ post.created_at}}</p>
 
         <!-- THREE DOT ICON -->
 		<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ellipsis-icon lucide-ellipsis"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>

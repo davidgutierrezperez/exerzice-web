@@ -6,6 +6,7 @@ use Api\ApiUrl;
 use Application\Security\AuthenticationException;
 use Application\Security\AuthorizationException;
 use Application\Security\BadRequestException;
+use Application\Security\NotFoundException;
 use Infrastructure\Http\HttpResponse;
 use Infrastructure\Http\HttpCode;
 use Infrastructure\Http\HttpFetchingRequest;
@@ -80,12 +81,14 @@ class ApiFetcher {
      */
     private function checkResponseStatusCode(int $statusCode): void {
         switch ($statusCode){
+            case HttpCode::BAD_REQUEST->value:
+                throw new BadRequestException();
             case HttpCode::UNAUTHORIZED->value:
                 throw new AuthorizationException();
             case HttpCode::FORBIDDEN->value: 
                 throw new AuthenticationException();
-            case HttpCode::BAD_REQUEST->value:
-                throw new BadRequestException();
+            case HttpCode::NOT_FOUND->value:
+                throw new NotFoundException();
             default:
                 break;
         }

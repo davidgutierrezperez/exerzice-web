@@ -1,0 +1,17 @@
+{% extends 'base-headered.twig' %}
+
+{% block styles %}
+	{{ parent() }}
+{% endblock %}
+
+{% block main_content %}
+	<div class='layout'>
+		<aside class='aside-nav'>
+			{% include 'components/navigation/aside-nav.twig' %}
+		</aside>
+
+		{% block center_content %}
+
+        {% endblock %}
+	</div>
+{% endblock %}

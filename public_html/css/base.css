@@ -115,8 +115,20 @@ input {
     justify-content: center;
 }
 
-.text-secundary {
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
     color: var(--text-secondary);
+}
+
+.primary-color {
+    color: var(--primary);
+}
+
+.medium-text {
+    font-size: 16px;
 }
 
 .small-image-logo {
@@ -133,6 +145,10 @@ input {
 
 .uppercase {
     text-transform: uppercase;
+}
+
+.bigger-gap {
+    gap: 40px;
 }
 
 .big-gap {
@@ -206,4 +222,24 @@ a, button {
 
 .primary-link {
     color: var(--primary);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.big-line {
+    height: 5px;
+    width: 100%;
+    border: 1px solid;
+    background-color: var(--primary);
+    border-radius: 10px;
+}
+
+.fit-content {
+    width: fit-content;
+}
+
+.pointer:hover {
+    cursor: pointer;
 }

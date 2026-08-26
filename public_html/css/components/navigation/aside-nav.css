@@ -11,3 +11,7 @@
     stroke: var(--primary) !important;
     stroke-width: 2 !important;
 }
+
+.aside-nav {
+    padding: 10px 30px;
+}

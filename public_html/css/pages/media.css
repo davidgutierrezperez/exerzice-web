@@ -1,0 +1,6 @@
+.media-picture {
+    height: 130px;
+    width: 130px;
+    border-radius: 999px;
+    object-fit: cover;
+}
