@@ -18,14 +18,15 @@ final class UserSession {
     public static function requireEntity(): ?UserEntity {
         if (!SessionManager::isActive()) SessionManager::start();
 
-        $userId = SessionManager::get('userId');
-        $userName = SessionManager::get('userName');
+        $userId = SessionManager::get(UserSessionKey::ID->value);
+        $userName = SessionManager::get(UserSessionKey::NAME->value);
+        $avatarUrl = SessionManager::get(UserSessionKey::AVATAR_URL->value) ?? null;
 
         if (!$userId || !$userName)
             return null;
 
         $normalizedUserId = Uuid::fromString($userId);
-        return new UserEntity($normalizedUserId, $userName);
+        return new UserEntity($normalizedUserId, $userName, $avatarUrl);
     }
 
     /**
@@ -39,6 +40,7 @@ final class UserSession {
 
         SessionManager::set(UserSessionKey::ID->value, $entity->getId()->toString());
         SessionManager::set(UserSessionKey::NAME->value, $entity->getName());
+        SessionManager::set(UserSessionKey::AVATAR_URL->value, $entity->getAvatarUrl());
     }
 
     /**

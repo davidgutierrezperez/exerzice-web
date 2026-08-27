@@ -16,5 +16,9 @@ final class ApiUrl {
     public static function url(): string {
         return $_ENV[DotEnv::API_URL];
     }
+
+    public static function browserUrl(): string {
+        return $_ENV[DotEnv::BROWSER_API_URL];
+    }
 }
 

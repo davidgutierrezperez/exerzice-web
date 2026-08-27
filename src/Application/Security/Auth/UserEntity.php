@@ -22,14 +22,17 @@ final class UserEntity {
      */
     private readonly string $name;
 
+    private readonly ?string $avatarUrl;
+
     /**
      * Default constructor of the class UserEntity.
      * @param UuidInterface $id User's ID.
      * @param string $name User's name.
      */
-    public function __construct(UuidInterface $id, string $name){
+    public function __construct(UuidInterface $id, string $name, ?string $avatarUrl){
         $this->id = $id;
         $this->name = $name;
+        $this->avatarUrl = $avatarUrl;
     }
 
     /**
@@ -46,6 +49,13 @@ final class UserEntity {
      */ 
     public function getName(): string {
         return $this->name;
+    }
+
+    /**
+     * Get the value of avatarUrl
+     */ 
+    public function getAvatarUrl(): ?string {
+        return $this->avatarUrl;
     }
 }
 

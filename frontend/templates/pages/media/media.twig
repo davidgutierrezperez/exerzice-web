@@ -10,7 +10,11 @@
 <div class='flex-column bigger-gap'>
     <section class='flex-column bigger-gap'>
         <div class='profile-main-info flex-row align-items big-gap'>
-            <img src='/images/examples/other_user_photo.jpg' class='image-logo media-picture'>
+            {% if media.picture %}
+                <img class='image-logo media-picture' src='{{ browserApiUrl }}{{ media.picture }}'>
+            {% else %}
+                <img class='image-logo media-picture' src='/images/logos/media/no-media-picture.png' alt="media">
+            {% endif %}
 
             <div class='flex-column justify-evently medium-gap'>
                 <h2>{{media.full_name}}</h2>

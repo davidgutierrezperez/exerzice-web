@@ -12,5 +12,7 @@ final class DotEnv {
      * @var string
      */
     public const API_URL = 'API_URL';
+
+    public const BROWSER_API_URL = 'BROWSER_API_URL';
 }
 

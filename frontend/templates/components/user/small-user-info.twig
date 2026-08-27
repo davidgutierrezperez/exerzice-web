@@ -4,7 +4,11 @@
 {% endblock %}
 
 <div class='flex-row medium-gap'>
-	<img class='small-image-logo' src='/images/examples/other_user_photo.jpg'>
+	{% if user.picture %}
+		<img class='small-image-logo' src='{{ browserApiUrl }}{{ user.picture }}'>
+	{% else %}
+		<img class='small-image-logo' src='/images/logos/user/no-user-picture.png' alt="user">
+	{% endif %}
 
 	<div class='flex-column user-info justify-around'>
 		<h2 class='user-name text-primary'>

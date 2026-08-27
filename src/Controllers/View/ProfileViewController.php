@@ -49,8 +49,8 @@ final class ProfileViewController extends BaseViewController {
         $userData = $this->getUserData($id);
         $posts = $this->getUserPosts($id);
 
-        echo $this->twig->render('pages/media/media.twig', 
-                                [ 'media' => $userData,
+        echo $this->twig->render('pages/user/profile.twig', 
+                                [ 'user' => $userData,
                                   'posts' => $posts]);
     }
 
@@ -65,8 +65,8 @@ final class ProfileViewController extends BaseViewController {
         $userData = $this->getLoggedUserData();
         $posts = $this->getUserPosts($userId);
 
-        echo $this->twig->render('pages/media/media.twig', 
-                                [ 'media' => $userData,
+        echo $this->twig->render('pages/user/profile.twig', 
+                                [ 'user' => $userData,
                                   'posts' => $posts]);
     }
 
