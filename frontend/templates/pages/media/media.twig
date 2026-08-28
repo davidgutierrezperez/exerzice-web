@@ -67,7 +67,7 @@
         <div class='info-selected-div'>
             {% if posts %}
                 {% for post in posts %}
-                    {% include 'components/posts/post.twig' with {post: post} %}
+                    {% include 'components/posts/post-summary.twig' with {post: post} %}
                 {% endfor %}
             {% else %}
                 <p class='text-secondary'>No posts were found</p>

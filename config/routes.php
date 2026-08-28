@@ -31,6 +31,7 @@ return function(\FastRoute\RouteCollector $r) {
     $r->addRoute(HttpMethod::GET->value, '/me', new Route(ProfileViewController::class, 'me', [RequireAuthenticatedMiddleware::class]));
 
     $r->addRoute(HttpMethod::GET->value, '/create-post', new Route(PostViewController::class, 'create', [RequireAuthenticatedMiddleware::class]));
+    $r->addRoute(HttpMethod::GET->value, '/post/{id:[0-9a-fA-F-]{36}}', new Route(PostViewController::class, 'index'));
     $r->addRoute(HttpMethod::POST->value, '/post', new Route(PostController::class, 'create', [RequireAuthenticatedMiddleware::class]));
 
     $r->addRoute(HttpMethod::GET->value, '/not-found', new Route(ErrorController::class, 'notFound'));

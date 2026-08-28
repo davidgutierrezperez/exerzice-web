@@ -14,7 +14,7 @@
 		<section class='posts-section'>
 			{% if posts %}
 				{% for post in posts %}
-					{% include 'components/posts/post.twig' with {post: post} %}
+					{% include 'components/posts/post-summary.twig' with {post: post} %}
 				{% endfor %}
 			{% else %}
 				<p class='error'>No posts were found</p>

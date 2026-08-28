@@ -1,0 +1,11 @@
+{% extends 'base-headered-aside.twig' %}
+
+{% block styles %}
+    {{ parent() }}
+{% endblock %}
+
+{% block center_content %}
+    <section class='post no-padding'>
+        {% include 'components/posts/post-summary.twig' with { post: post } %}
+    </section>
+{% endblock %}
