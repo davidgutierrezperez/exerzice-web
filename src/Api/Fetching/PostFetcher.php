@@ -41,6 +41,11 @@ final class PostFetcher extends ApiFetcher {
         return $this->fetch($fetchingRequest);
     }
 
+    /**
+     * Fetches a post by its ID.
+     * @param string $id Post's ID.
+     * @return HttpResponse HTTP response.
+     */
     public function byId(string $id): HttpResponse {
         $url = self::$BASE_URL . '/' . $id;
         $query = $this->buildFetchQuery($url);

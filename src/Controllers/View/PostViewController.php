@@ -10,6 +10,10 @@ use Twig;
  */
 final class PostViewController extends BaseViewController {
 
+    /**
+     * Posts fetching component.
+     * @var PostFetcher
+     */
     private readonly PostFetcher $postFetcher;
 
     /**
@@ -22,6 +26,11 @@ final class PostViewController extends BaseViewController {
         $this->postFetcher = new PostFetcher();
     }
 
+    /**
+     * Displays the specific page of a post.
+     * @param string $id ID of the post.
+     * @return void
+     */
     public function index(string $id): void {
         $postFetchRespose = $this->postFetcher->byId($id);
         $post = $postFetchRespose->getValue();
