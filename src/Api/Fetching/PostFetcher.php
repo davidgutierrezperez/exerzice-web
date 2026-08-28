@@ -42,6 +42,19 @@ final class PostFetcher extends ApiFetcher {
     }
 
     /**
+     * Fetches a post by its ID.
+     * @param string $id Post's ID.
+     * @return HttpResponse HTTP response.
+     */
+    public function byId(string $id): HttpResponse {
+        $url = self::$BASE_URL . '/' . $id;
+        $query = $this->buildFetchQuery($url);
+
+        $fetchingRequest = new HttpFetchingRequest(HttpMethod::GET, $query);
+        return $this->fetch($fetchingRequest);
+    }
+
+    /**
      * Fetches the creation of a new post.
      * @param CreatePostRequest $request Request to create a new post.
      * @return HttpResponse HTTP response.

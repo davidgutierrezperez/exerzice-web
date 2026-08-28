@@ -37,7 +37,7 @@ class ErrorController extends BaseViewController {
      * @return void
      */
     public function notFound(): void {
-        echo $this->twig->render('errors/not_found.twig');
+        echo $this->twig->render('pages/errors/not_found.twig');
     }
 
     /**
@@ -45,11 +45,11 @@ class ErrorController extends BaseViewController {
      * @return void
      */
     public function forbidden(): void {
-        echo $this->twig->render('errors/forbidden.twig');
+        echo $this->twig->render('pages/errors/forbidden.twig');
     }
 
     public function uups(): void {
-        echo $this->twig->render('errors/uups.twig');
+        echo $this->twig->render('pages/errors/uups.twig');
     }
 }
 

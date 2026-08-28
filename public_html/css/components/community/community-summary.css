@@ -11,10 +11,6 @@
     gap: 4px;
 }
 
-svg:hover {
-    stroke: var(--text-secondary) !important;
-}
-
 .community-summary-link h2 {
     transition: 0.2s ease-in-out;
 }
