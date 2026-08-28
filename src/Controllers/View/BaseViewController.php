@@ -2,6 +2,7 @@
 
 namespace Controllers\View;
 
+use Api\ApiUrl;
 use Application\Security\Auth\UserSession;
 use Application\Security\Auth\UserSessionKey;
 use Twig;
@@ -25,6 +26,9 @@ class BaseViewController {
     public function __construct(Twig\Environment $twig){
         $this->twig = $twig;
 
+        $this->twig->addGlobal(name: 'apiUrl', value: ApiUrl::url());
+        $this->twig->addGlobal(name: 'browserApiUrl', value: ApiUrl::browserUrl());
+
         $userLoggedIn = UserSession::isLoggedIn();
         $this->twig->addGlobal(name: 'isLoggedIn', value: $userLoggedIn);
 
@@ -33,6 +37,7 @@ class BaseViewController {
 
             $this->twig->addGlobal(name: UserSessionKey::NAME->value, value: $userEntity->getName());
             $this->twig->addGlobal(name: UserSessionKey::ID->value, value: $userEntity->getId());
+            $this->twig->addGlobal(name: UserSessionKey::AVATAR_URL->value, value: $userEntity->getAvatarUrl());
         }
     }
 }

@@ -1,0 +1,9 @@
+{% include 'pages/media/media.twig' with {
+    posts: posts,
+    media: {
+        full_name: user.full_name,
+        picture: user.avatar_url,
+        location: user.location,
+        registered_at: user.registered_at
+    }
+} %}

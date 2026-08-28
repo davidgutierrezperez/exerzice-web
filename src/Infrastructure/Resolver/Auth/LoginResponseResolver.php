@@ -42,6 +42,7 @@ final class LoginResponseResolver extends ResponseResolver {
 
         $userId = $data['id'] ?? null;
         $userName = $data['full_name'] ?? null;
+        $avatarUrl = $data['avatar_url'] ?? null;
 
         $errors = [];
 
@@ -58,7 +59,7 @@ final class LoginResponseResolver extends ResponseResolver {
             new ResolveResult(null, $errors);
 
         $normalizedUserId = Uuid::fromString($userId);
-        $userEntity = new UserEntity($normalizedUserId, $userName);
+        $userEntity = new UserEntity($normalizedUserId, $userName, $avatarUrl);
 
         return new ResolveResult($userEntity, []);
     } 
