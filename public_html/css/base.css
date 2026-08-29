@@ -305,3 +305,8 @@ textarea {
 .no-margin {
     margin: 0 !important;
 }
+
+.user-verified-icon {
+    stroke: blue !important;
+    stroke-width: 2;
+}

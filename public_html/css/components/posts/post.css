@@ -36,11 +36,6 @@
     gap: 10px;
 }
 
-.user-verified-icon {
-    stroke: blue !important;
-    stroke-width: 2;
-}
-
 .post-header > p {
     margin-left: auto;
 }
