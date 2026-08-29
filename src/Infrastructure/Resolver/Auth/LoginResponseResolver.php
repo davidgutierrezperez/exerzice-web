@@ -43,6 +43,7 @@ final class LoginResponseResolver extends ResponseResolver {
         $userId = $data['id'] ?? null;
         $userName = $data['full_name'] ?? null;
         $avatarUrl = $data['avatar_url'] ?? null;
+        $verificationStatus = $data['verified'] ?? null;
 
         $errors = [];
 
@@ -55,11 +56,16 @@ final class LoginResponseResolver extends ResponseResolver {
         if (!$userName)
             $errors[] = LoginResolverError::USER_NAME_REQUIRED;
 
+        if ($verificationStatus === null)
+            $errors[] = LoginResolverError::USER_VERIFICATION_STATUS_REQUIRED;
+
         if (!empty($errors))
             new ResolveResult(null, $errors);
 
         $normalizedUserId = Uuid::fromString($userId);
-        $userEntity = new UserEntity($normalizedUserId, $userName, $avatarUrl);
+        $userVerified = ($verificationStatus != 0);
+
+        $userEntity = new UserEntity($normalizedUserId, $userName, $avatarUrl, $userVerified);
 
         return new ResolveResult($userEntity, []);
     } 

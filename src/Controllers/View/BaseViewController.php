@@ -38,6 +38,7 @@ class BaseViewController {
             $this->twig->addGlobal(name: UserSessionKey::NAME->value, value: $userEntity->getName());
             $this->twig->addGlobal(name: UserSessionKey::ID->value, value: $userEntity->getId());
             $this->twig->addGlobal(name: UserSessionKey::AVATAR_URL->value, value: $userEntity->getAvatarUrl());
+            $this->twig->addGlobal(name: UserSessionKey::VERIFIED->value, value: $userEntity->getVerified());
         }
     }
 }

@@ -39,4 +39,9 @@ enum LoginResolverError: string implements ResolveError {
      * The user's name is required.
      */
     case USER_NAME_REQUIRED = 'user.name_required';
+
+    /**
+     * The user's verification status is required.
+     */
+    case USER_VERIFICATION_STATUS_REQUIRED = 'user.verification_status_required';
 }

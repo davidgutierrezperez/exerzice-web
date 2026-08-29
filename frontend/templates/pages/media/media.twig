@@ -17,7 +17,12 @@
             {% endif %}
 
             <div class='flex-column justify-evently medium-gap'>
-                <h2>{{media.full_name}}</h2>
+                <div class='flex-row align-items medium-gap'>
+                    <h2>{{media.full_name}}</h2>
+                    {% if media.verified %}
+                        <svg class='user-verified-icon' xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check-icon lucide-badge-check"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+                {% endif %}
+                </div>
                 <p class='text-secondary'>Ejemplo de texto</p>
             </div>
         </div>
