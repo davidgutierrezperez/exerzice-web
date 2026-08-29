@@ -21,12 +21,13 @@ final class UserSession {
         $userId = SessionManager::get(UserSessionKey::ID->value);
         $userName = SessionManager::get(UserSessionKey::NAME->value);
         $avatarUrl = SessionManager::get(UserSessionKey::AVATAR_URL->value) ?? null;
+        $userVerified = SessionManager::get(UserSessionKey::VERIFIED->value);
 
-        if (!$userId || !$userName)
+        if (!$userId || !$userName || $userVerified === null)
             return null;
 
         $normalizedUserId = Uuid::fromString($userId);
-        return new UserEntity($normalizedUserId, $userName, $avatarUrl);
+        return new UserEntity($normalizedUserId, $userName, $avatarUrl, $userVerified);
     }
 
     /**
@@ -41,6 +42,7 @@ final class UserSession {
         SessionManager::set(UserSessionKey::ID->value, $entity->getId()->toString());
         SessionManager::set(UserSessionKey::NAME->value, $entity->getName());
         SessionManager::set(UserSessionKey::AVATAR_URL->value, $entity->getAvatarUrl());
+        SessionManager::set(UserSessionKey::VERIFIED->value, $entity->getVerified());
     }
 
     /**

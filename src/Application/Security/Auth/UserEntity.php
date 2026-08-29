@@ -22,17 +22,30 @@ final class UserEntity {
      */
     private readonly string $name;
 
+    /**
+     * User's avatar URL.
+     * @var ?string
+     */
     private readonly ?string $avatarUrl;
+
+    /**
+     * User's verification status.
+     * @var bool
+     */
+    private readonly bool $verified;
 
     /**
      * Default constructor of the class UserEntity.
      * @param UuidInterface $id User's ID.
      * @param string $name User's name.
+     * @param ?string $avatarUrl User's avatar URL.
+     * @param bool $verified User's verification status.
      */
-    public function __construct(UuidInterface $id, string $name, ?string $avatarUrl){
+    public function __construct(UuidInterface $id, string $name, ?string $avatarUrl, bool $verified){
         $this->id = $id;
         $this->name = $name;
         $this->avatarUrl = $avatarUrl;
+        $this->verified = $verified;
     }
 
     /**
@@ -52,10 +65,21 @@ final class UserEntity {
     }
 
     /**
-     * Get the value of avatarUrl
+     * Returns the user's avatar URL.
+     * @return string|null
      */ 
     public function getAvatarUrl(): ?string {
         return $this->avatarUrl;
+    }
+
+    
+
+    /**
+     * Returns the user's verification status.
+     * @return bool True if the user is verified and false if otherwise.
+     */ 
+    public function getVerified(): bool {
+        return $this->verified;
     }
 }
 
