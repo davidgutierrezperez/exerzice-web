@@ -3,6 +3,8 @@
 namespace Controllers\View\Auth;
 
 use Controllers\View\BaseViewController;
+use Infrastructure\Http\HttpCode;
+use Infrastructure\Http\HttpResponse;
 use Twig;
 
 /**
@@ -22,8 +24,9 @@ final class RegisterViewController extends BaseViewController {
      * Renders the register page.
      * @return void
      */
-    public function index(): void {
-        echo $this->twig->render('pages/auth/register.twig');
+    public function index(): HttpResponse {
+        $page = $this->twig->render('pages/auth/register.twig');
+        return new HttpResponse($page, HttpCode::SUCCESS);
     }
 }
 

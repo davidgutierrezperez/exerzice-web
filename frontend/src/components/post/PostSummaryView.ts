@@ -6,11 +6,17 @@ import PostView from './PostView.js';
 class PostSummaryView implements PostView {
     private readonly rootContainer: HTMLElement;
     private readonly likeFormView: PostLikeFormView|null;
+    private readonly id: string|null;
 
     public constructor(rootContainer: HTMLElement){
         this.rootContainer = rootContainer;
 
+        this.id = this.queryId();
         this.likeFormView = this.initLikeFormView();
+    }
+
+    public getId(): string|null {
+        return this.id;
     }
 
     public setLikeListener(listener: PostLikeListener): void {
@@ -23,6 +29,10 @@ class PostSummaryView implements PostView {
 
     public unlike(): void {
         this.likeFormView?.unlike();
+    }
+
+    private queryId(): string|null {
+        return this.rootContainer.getAttribute('data-component-id');
     }
 
     private initLikeFormView(): PostLikeFormView|null {

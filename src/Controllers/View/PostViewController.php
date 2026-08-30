@@ -3,6 +3,9 @@
 namespace Controllers\View;
 
 use Api\Fetching\PostFetcher;
+use Infrastructure\Http\HttpCode;
+use Infrastructure\Http\HttpRequest;
+use Infrastructure\Http\HttpResponse;
 use Twig;
 
 /**
@@ -29,20 +32,22 @@ final class PostViewController extends BaseViewController {
     /**
      * Displays the specific page of a post.
      * @param string $id ID of the post.
-     * @return void
+     * @return HttpResponse HTTP response.
      */
-    public function index(string $id): void {
+    public function index(string $id): HttpResponse {
         $postFetchRespose = $this->postFetcher->byId($id);
         $post = $postFetchRespose->getValue();
 
-        echo $this->twig->render('pages/posts/post.twig', ['post' => $post]);
+        $page = $this->twig->render('pages/posts/post.twig', ['post' => $post]);
+        return new HttpResponse($page, HttpCode::SUCCESS);
     }
 
     /**
      * Renders the page to create a new post.
-     * @return void
+     * @return HttpResponse HTTP response.
      */
-    public function create(): void {
-        echo $this->twig->render('pages/posts/create-post.twig');
+    public function create(): HttpResponse {
+        $page = $this->twig->render('pages/posts/create-post.twig');
+        return new HttpResponse($page, HttpCode::SUCCESS);
     }
 }

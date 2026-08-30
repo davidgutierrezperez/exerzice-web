@@ -4,6 +4,8 @@ namespace Controllers;
 
 use Controllers\View\BaseViewController;
 use Infrastructure\Http\ErrorRouteType;
+use Infrastructure\Http\HttpCode;
+use Infrastructure\Http\HttpResponse;
 
 class ErrorController extends BaseViewController {
 
@@ -12,44 +14,43 @@ class ErrorController extends BaseViewController {
      * @param ErrorRouteType $error Error encountered.
      * @return void
      */
-    public function error(ErrorRouteType $error): void {
+    public function error(ErrorRouteType $error): HttpResponse {
         switch ($error){
             // Page not found.
             case ErrorRouteType::NOT_FOUND:
-                $this->notFound();
-                break;
-
+                return $this->notFound();
             // Page not accesible by the user.
             case ErrorRouteType::FORBIDDEN:
-                $this->forbidden();
-                break;
+                return $this->forbidden();
             case ErrorRouteType::UNKNOWN:
-                $this->uups();
+                return $this->uups();
             // Default error.
             default:
-                $this->notFound();
-                break;
+                return $this->notFound();
         }
     }
 
     /**
      * Renders the 404 error page.
-     * @return void
+     * @return HttpResponse
      */
-    public function notFound(): void {
-        echo $this->twig->render('pages/errors/not_found.twig');
+    public function notFound(): HttpResponse {
+        $page = $this->twig->render('pages/errors/not_found.twig');
+        return new HttpResponse($page, HttpCode::NOT_FOUND);
     }
 
     /**
      * Renders the 403 error page.
-     * @return void
+     * @return HttpResponse
      */
-    public function forbidden(): void {
-        echo $this->twig->render('pages/errors/forbidden.twig');
+    public function forbidden(): HttpResponse{
+        $page = $this->twig->render('pages/errors/forbidden.twig');
+        return new HttpResponse($page, HttpCode::FORBIDDEN);
     }
 
-    public function uups(): void {
-        echo $this->twig->render('pages/errors/uups.twig');
+    public function uups(): HttpResponse{
+        $page = $this->twig->render('pages/errors/uups.twig');
+        return new HttpResponse($page, HttpCode::BAD_REQUEST);
     }
 }
 

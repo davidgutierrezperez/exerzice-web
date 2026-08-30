@@ -3,6 +3,8 @@
 namespace Controllers\View\Auth;
 
 use Controllers\View\BaseViewController;
+use Infrastructure\Http\HttpCode;
+use Infrastructure\Http\HttpResponse;
 use Twig;
 
 /**
@@ -22,8 +24,9 @@ final class LoginViewController extends BaseViewController {
      * Renders the login page.
      * @return void
      */
-    public function index(): void {
-        echo $this->twig->render('pages/auth/login.twig');
+    public function index(): HttpResponse {
+        $page = $this->twig->render('pages/auth/login.twig');
+        return new HttpResponse($page, HttpCode::SUCCESS);
     }
 }
 

@@ -6,6 +6,8 @@ use Api\Fetching\PostFetcher;
 use Api\Fetching\UserFetcher;
 use Application\Security\Auth\UserSession;
 use Controllers\View\BaseViewController;
+use Infrastructure\Http\HttpCode;
+use Infrastructure\Http\HttpResponse;
 use Infrastructure\Http\RouteRedirector;
 use Twig;
 
@@ -42,32 +44,36 @@ final class ProfileViewController extends BaseViewController {
      * @param string $id ID of the user.
      * @return void
      */
-    public function profile(string $id): void {
+    public function profile(string $id): HttpResponse {
         if ($this->isLoggedUserProfile($id))
             RouteRedirector::redirect('/me');
 
         $userData = $this->getUserData($id);
         $posts = $this->getUserPosts($id);
 
-        echo $this->twig->render('pages/user/profile.twig', 
+        $page = $this->twig->render('pages/user/profile.twig', 
                                 [ 'user' => $userData,
                                   'posts' => $posts]);
+
+        return new HttpResponse($page, HttpCode::SUCCESS);
     }
 
     /**
      * Displays the profile page of the current logged user.
      * @return void
      */
-    public function me(): void {
+    public function me(): HttpResponse {
         $userEntity = UserSession::requireEntity();
         $userId = $userEntity->getId()->toString();
 
         $userData = $this->getLoggedUserData();
         $posts = $this->getUserPosts($userId);
 
-        echo $this->twig->render('pages/user/profile.twig', 
+        $page = $this->twig->render('pages/user/profile.twig', 
                                 [ 'user' => $userData,
                                   'posts' => $posts]);
+
+        return new HttpResponse($page, HttpCode::SUCCESS);
     }
 
     /**

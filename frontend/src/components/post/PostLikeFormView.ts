@@ -57,15 +57,16 @@ class PostLikeFormView {
     private fillLikeIcon(): void {
         if (this.likeButtonIcon == null) return;
 
-        this.likeButtonIcon.style.fill = 'var(--primary)';
-        this.likeButtonIcon.style.stroke = 'var(--primary)';
+        this.likeButtonIcon.style.setProperty('fill', 'var(--primary)');
+        this.likeButtonIcon.style.setProperty('stroke', 'var(--primary)');
         
     }
 
     private unfillLikeIcon(): void {
         if (this.likeButtonIcon == null) return;
         
-        this.likeButtonIcon.style.fill = 'none';
+        this.likeButtonIcon.style.setProperty('fill', 'none');
+        this.likeButtonIcon.style.setProperty('stroke', 'var(--text-primary)');
     }
 }
 
