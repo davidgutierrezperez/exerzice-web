@@ -73,6 +73,7 @@ svg {
     stroke: var(--text-secondary);
     stroke-width: 1;
     background-color: none;
+    fill: none;
     
     transition: 0.2s ease-in-out;
 }
