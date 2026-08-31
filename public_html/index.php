@@ -12,6 +12,7 @@ use Application\Security\BadRequestException;
 use Application\Security\EmptyRequestException;
 use Application\Security\NotFoundException;
 use Controllers\ErrorController;
+use Infrastructure\Http\HttpCode;
 use Infrastructure\Http\RouteRedirector;
 
 ini_set('display_errors', 1);
@@ -46,13 +47,15 @@ $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
 // Router state
 $routerState = $routeInfo[0];
 
+$response = null;
+
 // Router handling
 switch ($routerState) {
     case FastRoute\Dispatcher::NOT_FOUND:
-        (new ErrorController($twig))->notFound();
+        $response = (new ErrorController($twig))->notFound();
         break;
     case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
-        (new ErrorController($twig))->forbidden();
+        $response = (new ErrorController($twig))->forbidden();
         break;
     case FastRoute\Dispatcher::FOUND:
         try {
@@ -83,4 +86,10 @@ switch ($routerState) {
 
         break;
 }
-?>
+
+if ($response != null){
+    http_response_code($response->getCode()->value);
+    echo $response->getValue();
+} else {
+    RouteRedirector::redirect('/');
+}

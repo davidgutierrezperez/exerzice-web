@@ -5,6 +5,8 @@ namespace Controllers\View;
 use Twig;
 use Api\Fetching\PostFetcher;
 use Api\Fetching\SpaceFetcher;
+use Infrastructure\Http\HttpCode;
+use Infrastructure\Http\HttpResponse;
 
 /**
  * The class HomeViewController represents the controller component that handles the home page.
@@ -36,17 +38,18 @@ class HomeViewController extends BaseViewController {
 
     /**
      * Displays the index page.
-     * @return void
+     * @return HttpResponse HTTP response.
      */
-    public function index(): void {
+    public function index(): HttpResponse {
         $postsResponse = $this->postFetcher->fetchByCreator('3057cc52-0d8c-4ae2-a6d9-4b3b036906e0');
         $spacesResponse = $this->spaceFetcher->fetchByLocation('almeria');
 
         $posts = $postsResponse->getValue();
         $spaces = $spacesResponse->getValue();
     
+        $page = $this->twig->render('pages/index.twig', ['posts' => $posts, 'spaces' => $spaces]);
 
-        echo $this->twig->render('pages/index.twig', ['posts' => $posts, 'spaces' => $spaces]);
+        return new HttpResponse($page, HttpCode::SUCCESS);
     }
 }
 

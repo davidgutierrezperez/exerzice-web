@@ -1,0 +1,24 @@
+{
+  "name": "exerzice-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidgutierrezperez/exerzice-web.git"
+  },
+  "keywords": [],
+  "author": "David Gutiérrez Pérez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidgutierrezperez/exerzice-web/issues"
+  },
+  "homepage": "https://github.com/davidgutierrezperez/exerzice-web#readme",
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}

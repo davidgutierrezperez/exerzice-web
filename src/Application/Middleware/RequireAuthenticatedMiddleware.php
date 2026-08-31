@@ -19,7 +19,9 @@ final class RequireAuthenticatedMiddleware implements Middleware {
      * @return void
      */
     public function execute(): void {
-        if (!UserSession::isLoggedIn())
+        if (!UserSession::isLoggedIn()){
             throw new AuthenticationException();
+        }
+
     }
 }

@@ -33,7 +33,7 @@ final class HttpResponse {
 
     /**
      * Returns the value data of the response.
-     * @param mixed
+     * @return mixed
      */ 
     public function getValue(): mixed {
         return $this->value;
@@ -41,7 +41,7 @@ final class HttpResponse {
 
     /**
      * Returns the HTTP code of the response.
-     * @param HttpCode 
+     * @return HttpCode 
      */ 
     public function getCode(): HttpCode {
         return $this->code;
