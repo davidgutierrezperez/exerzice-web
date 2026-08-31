@@ -5,6 +5,7 @@ namespace Controllers\Action;
 use Api\Fetching\PostFetcher;
 use Application\Mapper\Post\CreatePostMapper;
 use Infrastructure\Http\HttpRequest;
+use Infrastructure\Http\HttpResponse;
 use Infrastructure\Http\RouteRedirector;
 
 /**
@@ -38,6 +39,11 @@ final class PostController {
 
         $this->fetcher->create($createPostRequest);
         RouteRedirector::redirect('/');
+    }
+
+    public function like(string $id): void {
+        error_log("-----------------HE LLEGADO----------------------");
+        $this->fetcher->like($id);
     }
 
 }

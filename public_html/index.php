@@ -84,8 +84,6 @@ switch ($routerState) {
             RouteRedirector::redirect('/not-found');
         }
 
-        error_log("EL CÓDIGO ES: " . $response->getCode()->value);
-
         break;
 }
 

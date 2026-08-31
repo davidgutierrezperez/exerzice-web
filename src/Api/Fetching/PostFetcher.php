@@ -25,6 +25,8 @@ final class PostFetcher extends ApiFetcher {
      */
     private static string $CREATOR_PARAMETER = 'created_by';
 
+    private static string $LIKE_PARAMETER = '/like';
+
     /**
      * Fetches posts by their creator.
      * @param string $id ID of the user who created the posts.
@@ -66,6 +68,14 @@ final class PostFetcher extends ApiFetcher {
 
         $query = $this->buildFetchQuery(self::$BASE_URL);
         $fetchingRequest = new HttpFetchingRequest(HttpMethod::POST, $query, $params);
+        return $this->fetch($fetchingRequest);
+    }
+
+    public function like(string $id): HttpResponse {
+        $url = self::$BASE_URL . '/' . $id . self::$LIKE_PARAMETER;
+        $query = $this->buildFetchQuery($url);
+
+        $fetchingRequest = new HttpFetchingRequest(HttpMethod::POST, $query);
         return $this->fetch($fetchingRequest);
     }
 }

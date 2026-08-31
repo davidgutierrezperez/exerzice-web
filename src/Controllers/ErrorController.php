@@ -12,7 +12,7 @@ class ErrorController extends BaseViewController {
     /**
      * Handles the errors encountered while navigation through the app.
      * @param ErrorRouteType $error Error encountered.
-     * @return void
+     * @return HttpResponse HTTP response.
      */
     public function error(ErrorRouteType $error): HttpResponse {
         switch ($error){
@@ -48,7 +48,7 @@ class ErrorController extends BaseViewController {
         return new HttpResponse($page, HttpCode::FORBIDDEN);
     }
 
-    public function uups(): HttpResponse{
+    public function uups(): HttpResponse {
         $page = $this->twig->render('pages/errors/uups.twig');
         return new HttpResponse($page, HttpCode::BAD_REQUEST);
     }

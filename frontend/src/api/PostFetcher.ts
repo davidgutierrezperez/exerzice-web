@@ -9,7 +9,7 @@ class PostFetcher {
 
     public like(id: string): Promise<Response> {
         const query: string = PostFetcher.BASE_URL + id + PostFetcher.LIKE_PARAMETER;
-        const fetchingRequest: HttpFetchingRequest = new HttpFetchingRequest(HttpMethod.GET, query);
+        const fetchingRequest: HttpFetchingRequest = new HttpFetchingRequest(HttpMethod.POST, query);
 
         return HttpFetcher.fetch(fetchingRequest);
     }

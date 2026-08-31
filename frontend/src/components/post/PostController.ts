@@ -1,4 +1,5 @@
 import PostFetcher from "../../api/PostFetcher.js";
+import RouteRedirector from "../../infraestructure/http/RouteRedirector.js";
 import PostLikeListener from "./PostLikeListener.js";
 import PostView from "./PostView.js";
 
@@ -14,14 +15,16 @@ class PostController implements PostLikeListener {
     }
 
     public async like(): Promise<void> {
-        const postId: string|null = this.postView.getId();
+        const postId = this.postView.getId();
         if (!postId) return;
 
         const response = await this.postApiFetcher.like(postId);
-        const statusCode = response.status;
-        const data = response.json;
-        
-        this.postView.like();
+        const isPostLiked = this.postView.isLiked();
+
+        if (isPostLiked)
+            this.postView.unlike();
+        else 
+            this.postView.like();
     }
 
     private init(): void {
