@@ -25,6 +25,10 @@ final class PostFetcher extends ApiFetcher {
      */
     private static string $CREATOR_PARAMETER = 'created_by';
 
+    /**
+     * Parameter to obtain posts based on the user's location.
+     * @var string
+     */
     private static string $LOCATION_PARAMETER = 'user_location';
 
     /**
@@ -55,6 +59,11 @@ final class PostFetcher extends ApiFetcher {
         return $this->fetch($fetchingRequest);
     }
 
+    /**
+     * Fetches posts by a location.
+     * @param string $location Location of a user.
+     * @return HttpResponse HTTP response.
+     */
     public function byLocation(string $location): HttpResponse {
         $params = [
             self::$LOCATION_PARAMETER => $location

@@ -2,9 +2,21 @@
 
 namespace Infrastructure\Ip;
 
+/**
+ * The class IPGeolocator represents a geolocation component based on the current IP of a user.
+ */
 final class IPGeolocator {
+
+    /**
+     * Geolocation API URL.
+     * @var string
+     */
     private static string $API_URL = 'http://ip-api.com/json/';
 
+    /**
+     * Locates the city where the user is located.
+     * @return string|null
+     */
     public static function locate(): ?string {
         $ip = $_SERVER['REMOTE_ADDR'];
 
