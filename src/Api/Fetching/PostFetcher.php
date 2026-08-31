@@ -25,8 +25,16 @@ final class PostFetcher extends ApiFetcher {
      */
     private static string $CREATOR_PARAMETER = 'created_by';
 
+    /**
+     * Parameter to like a post.
+     * @var string
+     */
     private static string $LIKE_PARAMETER = '/like';
 
+    /**
+     * Parameter to unlike a post.
+     * @var string
+     */
     private static string $UNLIKE_PARAMETER = '/unlike';
 
     /**
@@ -73,6 +81,11 @@ final class PostFetcher extends ApiFetcher {
         return $this->fetch($fetchingRequest);
     }
 
+    /**
+     * Likes a post identified by its ID.
+     * @param string $id Post's ID.
+     * @return HttpResponse HTTP response.
+     */
     public function like(string $id): HttpResponse {
         $url = self::$BASE_URL . '/' . $id . self::$LIKE_PARAMETER;
         $query = $this->buildFetchQuery($url);
@@ -81,6 +94,11 @@ final class PostFetcher extends ApiFetcher {
         return $this->fetch($fetchingRequest);
     }
 
+    /**
+     * Unlikes a post identified by its ID.
+     * @param string $id Post's ID.
+     * @return HttpResponse HTTP response.
+     */
     public function unlike(string $id): HttpResponse {
         $url = self::$BASE_URL . '/' . $id . self::$UNLIKE_PARAMETER;
         $query = $this->buildFetchQuery($url);

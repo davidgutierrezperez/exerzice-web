@@ -39,8 +39,6 @@ final class HttpFetchingRequest {
         $this->params = $params;
     }
 
-    
-
     /**
      * Returns the method of the request.
      * @return HttpMethod HTTP method.

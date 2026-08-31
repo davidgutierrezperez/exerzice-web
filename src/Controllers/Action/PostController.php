@@ -41,10 +41,20 @@ final class PostController {
         RouteRedirector::redirect('/');
     }
 
+    /**
+     * Likes a post identified by its ID.
+     * @param string $id Post's ID.
+     * @return HttpResponse HTTP response.
+     */
     public function like(string $id): HttpResponse {
         return $this->fetcher->like($id);
     }
 
+    /**
+     * Unlikes a post identified by its ID.
+     * @param string $id Post's ID.
+     * @return HttpResponse HTTP response.
+     */
     public function unlike(string $id): HttpResponse {
         return $this->fetcher->unlike($id);
     }

@@ -1,12 +1,26 @@
 import PostFetcher from "../../api/PostFetcher.js";
-import RouteRedirector from "../../infraestructure/http/RouteRedirector.js";
 import PostLikeListener from "./PostLikeListener.js";
 import PostView from "./PostView.js";
 
+/**
+ * The class PostController represents a controller component that handles the views of posts.
+ */
 class PostController implements PostLikeListener {
+
+    /** 
+     * Post fetching component.
+     */
     private readonly postApiFetcher: PostFetcher;
+
+    /** 
+     * View of the post to handle.
+     */
     private readonly postView: PostView;
 
+    /**
+     * Default constructor of the class PostController.
+     * @param postView View of the post.
+     */
     public constructor(postView: PostView){
         this.postView = postView;
         this.postApiFetcher = new PostFetcher();
@@ -14,6 +28,9 @@ class PostController implements PostLikeListener {
         this.init();
     }
 
+    /** 
+     * Handles the liking of a post.
+     */
     public async like(): Promise<void> {
         const postId = this.postView.getId();
         if (!postId) return;
@@ -21,16 +38,19 @@ class PostController implements PostLikeListener {
         const isPostLiked = this.postView.isLiked();
 
         if (isPostLiked){
-            console.log("AQUIIIIIIIIII");
             await this.postApiFetcher.unlike(postId);
             this.postView.unlike();
         }
+
         else {
             await this.postApiFetcher.like(postId);
             this.postView.like();
         }
     }
 
+    /** 
+     * Initializes the basic behavior of the controller.
+     */
     private init(): void {
         this.postView.setLikeListener(this);
     }
