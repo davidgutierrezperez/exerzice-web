@@ -121,7 +121,7 @@ final class ProfileViewController extends BaseViewController {
      * @return array Array that contains the information about the posts created by the user.
      */
     private function getUserPosts(string $userId): array {
-        $postsDataResponse = $this->postFetcher->fetchByCreator($userId);
+        $postsDataResponse = $this->postFetcher->byCreator($userId);
         return $postsDataResponse->getValue();
     }
 }
