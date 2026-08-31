@@ -7,6 +7,7 @@ use Api\Fetching\PostFetcher;
 use Api\Fetching\SpaceFetcher;
 use Infrastructure\Http\HttpCode;
 use Infrastructure\Http\HttpResponse;
+use Infrastructure\Ip\IPGeolocator;
 
 /**
  * The class HomeViewController represents the controller component that handles the home page.
@@ -41,8 +42,10 @@ class HomeViewController extends BaseViewController {
      * @return HttpResponse HTTP response.
      */
     public function index(): HttpResponse {
-        $postsResponse = $this->postFetcher->fetchByCreator('3057cc52-0d8c-4ae2-a6d9-4b3b036906e0');
-        $spacesResponse = $this->spaceFetcher->fetchByLocation('almeria');
+        $userLocation = IPGeolocator::locate() ?? 'Almería';
+
+        $postsResponse = $this->postFetcher->byLocation($userLocation);
+        $spacesResponse = $this->spaceFetcher->fetchByLocation($userLocation);
 
         $posts = $postsResponse->getValue();
         $spaces = $spacesResponse->getValue();
