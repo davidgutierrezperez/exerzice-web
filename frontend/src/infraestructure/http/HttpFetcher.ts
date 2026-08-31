@@ -1,5 +1,4 @@
 import HttpFetchingRequest from "./HttpFetchingRequest.js";
-import HttpResponse from "./HttpResponse.js";
 import HttpMethod from './HttpMethod';
 import RouteRedirector from "./RouteRedirector.js";
 
@@ -15,7 +14,8 @@ class HttpFetcher {
 
     private static buildFetchingOptions(method: HttpMethod): Record<any, any> {
         const requestOptions = {
-            method: method.valueOf()
+            method: method.valueOf(),
+            credentials: 'same-origin'
         };
 
         return requestOptions;

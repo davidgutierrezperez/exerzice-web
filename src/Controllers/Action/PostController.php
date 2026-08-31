@@ -41,9 +41,12 @@ final class PostController {
         RouteRedirector::redirect('/');
     }
 
-    public function like(string $id): void {
-        error_log("-----------------HE LLEGADO----------------------");
-        $this->fetcher->like($id);
+    public function like(string $id): HttpResponse {
+        return $this->fetcher->like($id);
+    }
+
+    public function unlike(string $id): HttpResponse {
+        return $this->fetcher->unlike($id);
     }
 
 }

@@ -18,13 +18,17 @@ class PostController implements PostLikeListener {
         const postId = this.postView.getId();
         if (!postId) return;
 
-        const response = await this.postApiFetcher.like(postId);
         const isPostLiked = this.postView.isLiked();
 
-        if (isPostLiked)
+        if (isPostLiked){
+            console.log("AQUIIIIIIIIII");
+            await this.postApiFetcher.unlike(postId);
             this.postView.unlike();
-        else 
+        }
+        else {
+            await this.postApiFetcher.like(postId);
             this.postView.like();
+        }
     }
 
     private init(): void {

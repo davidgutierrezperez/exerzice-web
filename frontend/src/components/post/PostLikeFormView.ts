@@ -5,6 +5,7 @@ class PostLikeFormView {
     private readonly formContainer: HTMLElement;
     private readonly likeButtonIcon: HTMLElement|null;
     private readonly likeCounter: HTMLElement|null;
+    private liked: boolean;
 
     private listener: PostLikeListener|null;
 
@@ -13,6 +14,9 @@ class PostLikeFormView {
 
         this.likeButtonIcon = formContainer.querySelector('[data-action = "like-button"]');
         this.likeCounter = formContainer.querySelector('[data-role = "like-counter"]');
+        this.liked = this.resolvePostLikeStatus();
+
+        console.log("LIKE STATUS: " + this.liked);
 
         this.listener = null;
     }
@@ -26,14 +30,22 @@ class PostLikeFormView {
         })
     }
 
+    public isLiked(): boolean {
+        return this.liked;
+    }
+
     public like(): void {
         this.incrementLike();
         this.fillLikeIcon();
+
+        this.liked = true;
     }
 
     public unlike(): void {
         this.decreaseLikeCounter();
         this.unfillLikeIcon();
+
+        this.liked = false;
     }
 
     private incrementLike(): void {
@@ -67,6 +79,14 @@ class PostLikeFormView {
         
         this.likeButtonIcon.style.setProperty('fill', 'none');
         this.likeButtonIcon.style.setProperty('stroke', 'var(--text-primary)');
+    }
+
+    private resolvePostLikeStatus(): boolean {
+        const likeValue: string|null = this.formContainer.getAttribute('data-value');
+        if (likeValue == null)
+            return false;
+        
+        return likeValue === '1';
     }
 }
 

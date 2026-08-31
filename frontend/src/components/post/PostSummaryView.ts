@@ -7,14 +7,12 @@ class PostSummaryView implements PostView {
     private readonly rootContainer: HTMLElement;
     private readonly likeFormView: PostLikeFormView|null;
     private readonly id: string|null;
-    private liked: boolean;
 
     public constructor(rootContainer: HTMLElement){
         this.rootContainer = rootContainer;
 
         this.id = this.queryId();
         this.likeFormView = this.initLikeFormView();
-        this.liked = false;
     }
 
     public getId(): string|null {
@@ -26,17 +24,18 @@ class PostSummaryView implements PostView {
     }
 
     public isLiked(): boolean {
-        return this.liked;
+        if (this.likeFormView == null) 
+            return false;
+
+        return this.likeFormView.isLiked();
     }
 
     public like(): void {
         this.likeFormView?.like();
-        this.liked = true;
     }
 
     public unlike(): void {
         this.likeFormView?.unlike();
-        this.liked = false;
     }
 
     private queryId(): string|null {
